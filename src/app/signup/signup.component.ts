@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { routerTransition } from '../router.animations';
 import { Usr } from '../layout/usr/usr';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-signup',
@@ -10,53 +10,53 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
     animations: [routerTransition()]
 })
 export class SignupComponent implements OnInit {
-    reactiveForm : FormGroup
+    signupForm : FormGroup
   
     USR_EMAIL : string = '';
-    USR_PW : string;
-    USR_PW2 : string;
-    usr : Usr = {
-        USR_ID     : '',
-        USR_EMAIL  : 'lihelp@gmail.com',
-        USR_PW     : '',
-        USR_NM     : '',
-        USR_AGE    : '',
-        USE_YN     : '',
-        REG_USR_ID : '',
-        UPD_USR_ID : ''
-      };
+    // USR_PW : string;
+    // USR_PW2 : string;
+    // usr : Usr = {
+    //     USR_ID     : '',
+    //     USR_EMAIL  : 'lihelp@gmail.com',
+    //     USR_PW     : '',
+    //     USR_NM     : '',
+    //     USR_AGE    : '',
+    //     USE_YN     : '',
+    //     REG_USR_ID : '',
+    //     UPD_USR_ID : ''
+    //   };
     
-    constructor() {}
-
-    ngOnInit() {
-    
-      this.createForm();
-    
+    constructor(private fb: FormBuilder) { // <--- inject FormBuilder
+        this.createForm();
     }
+      
  
+    ngOnInit() {
+    }
+
     onRegister() {
         alert("USR_EMAIL=="+this.USR_EMAIL);
     }
 
     createForm(){
-        this.reactiveForm = new FormGroup({
-            email : new FormControl('',Validators.required),    
-            password : new FormControl('',Validators.required),
-            passwordConfirm : new FormControl('',Validators.required),
-        })
+        this.signupForm = this.fb.group({
+            email : ['',Validators.required,Validators.minLength(2)],    
+            password : ['',Validators.required],
+            passwordConfirm : ['',Validators.required]
+        });
     }
 
-    get email(){
-        return this.reactiveForm.get('email')
-    }
+    // get email(){
+    //     return this.signupForm.get('email')
+    // }
 
-    get password(){
-        return this.reactiveForm.get('password')
-    }
+    // get password(){
+    //     return this.signupForm.get('password')
+    // }
 
-    get passwordConfirm(){
-        return this.reactiveForm.get('passwordConfirm')
-    }
+    // get passwordConfirm(){
+    //     return this.signupForm.get('passwordConfirm')
+    // }
 
 
 } 
