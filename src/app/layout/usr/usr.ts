@@ -2,6 +2,7 @@ export class Usr {
   USR_ID     : string;
   USR_EMAIL  : string;
   USR_PW     : string;
+  USR_PW2    : string;
   USR_NM     : string;
   USR_AGE    : string;
   USE_YN     : string;
