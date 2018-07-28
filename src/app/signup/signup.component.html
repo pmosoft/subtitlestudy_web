@@ -6,16 +6,16 @@
             <form>
                 <div class="form-content">
                     <div class="form-group">
-                         <input type="email" name="USR_EMAIL" [(ngModel)]="usr.USR_EMAIL" class="form-control input-underline input-lg" placeholder="Email">
+                         <input type="email" name="usrEmail" [(ngModel)]="usr.usrEmail" class="form-control input-underline input-lg" placeholder="Email">
                     </div>
                    <div class="form-group">
-                        <input type="password" name="USR_PW" [(ngModel)]="usr.USR_PW" class="form-control input-underline input-lg" placeholder="Password">
+                        <input type="password" name="usrPw" [(ngModel)]="usr.usrPw" class="form-control input-underline input-lg" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="password" name="USR_PW2" [(ngModel)]="usr.USR_PW2" class="form-control input-underline input-lg" placeholder="Repeat Password">
+                        <input type="password" name="usrPw2" [(ngModel)]="usr.usrPw2" class="form-control input-underline input-lg" placeholder="Repeat Password">
                     </div>
                 </div>
-                <a class="btn rounded-btn"  (click)="onRegister()" > Register </a>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']" (click)="onRegister()" > Register </a>&nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
             </form>
         </div>

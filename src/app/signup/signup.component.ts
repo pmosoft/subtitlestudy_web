@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { routerTransition } from '../router.animations';
-import { Usr } from '../layout/usr/usr';
 import { Validators } from '@angular/forms';
 import { ValidationService } from './validation.service';
+import { AlertsService } from 'angular-alert-module';
+import { Usr } from '../layout/usr/usr';
+import { UsrService } from '../layout/usr/usr.service';
 
 @Component({
     selector: 'app-signup',
@@ -12,31 +14,46 @@ import { ValidationService } from './validation.service';
 })
 export class SignupComponent implements OnInit {
     usr : Usr = {
-         USR_ID     : '',
-         USR_EMAIL  : '',
-         USR_PW     : '',
-         USR_PW2    : '',
-         USR_NM     : '',
-         USR_AGE    : '',
-         USE_YN     : '',
-         REG_USR_ID : '',
-         UPD_USR_ID : ''
+        usrId     : '',
+        usrEmail  : 'lifedomy@gmail.com',
+        usrPw     : '12345678',
+        usrPw2    : '12345678',
+        usrNm     : '',
+        usrAge    : '',
+        useYn     : '',
+        regUsrId : '',
+        updUsrId : ''
          };
     
-    constructor() {
+    constructor(private usrService: UsrService
+               ,private alerts: AlertsService) {
     }
       
     ngOnInit(): void {
-        console.log("USR_PW=="+this.usr.USR_PW2==''?'a':'b');  
-        alert("valid=="+ValidationService.emailValidator('lifegmail.com'));
+        //console.log("usrPw=="+this.usr.usrPw2==''?'a':'b');  
+        //if(!ValidationService.emailValidator('lifegmail.com')) return;
+        //if(!ValidationService.emailValidator('lifegmail.com')) return;
     }
 
     onRegister() {
-        console.log("USR_EMAIL=="+this.usr.USR_EMAIL);     
-        console.log("USR_PW=="+this.usr.USR_PW);   
-        console.log("USR_PW=="+this.usr.USR_PW2);  
+        //this.alerts.setMessage('All the fields are required','error');
+        //this.alerts.setMessage('Configurations saved successfully!','success');
+        //this.alerts.setMessage('Please save all the changes before closing','warn');
+        // Validation
+        console.log("usrEmail=="+this.usr.usrEmail);     
+        console.log("usrPw=="+this.usr.usrPw);   
+        console.log("usrPw=="+this.usr.usrPw2);  
+        if(!ValidationService.emailValidator(this.usr.usrEmail)) return;
+        if(!ValidationService.passwordValidator(this.usr.usrPw)) return;
+        if(this.usr.usrPw != this.usr.usrPw2) {
+            alert("difference password and passwordConfirm");
+            return;          
+        }
            
-             //alert("valid=="+ValidationService.emailValidator(this.usr.USR_EMAIL));     
+        this.usrService.insertUsr(this.usr).subscribe(result => {
+            if(!result.isSuccess) alert(result.errUsrMsg)
+            else console.log(result.usrMsg);  
+        });
     }
 
     // get passwordConfirm(){

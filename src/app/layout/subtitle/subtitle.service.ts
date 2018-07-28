@@ -13,6 +13,8 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class SubtitleService {
 
+  subtitle : Subtitle;
+
   private heroesUrl = 'http://localhost:8085/subtitle/test3';  // URL to web api
 
   constructor(
@@ -22,6 +24,18 @@ export class SubtitleService {
   getHeroes (): Observable<Subtitle> {
     return this.http.get<Subtitle>('http://localhost:8085/subtitle/test5');
   }
+
+  selectSubtitle (subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://localhost:8085/usr/selectSubtitle', subtitle, httpOptions)
+    ;
+  }
+
+  saveSubtitle (subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://localhost:8085/subtitle/saveSubtitle', subtitle, httpOptions)
+    ;
+  }
+
+
 
 }
 
