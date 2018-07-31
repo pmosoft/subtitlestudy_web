@@ -25,23 +25,13 @@ export class SubtitleService {
     return this.http.get<Subtitle>('http://localhost:8085/subtitle/test5');
   }
 
-  selectSubtitle (subtitle: Subtitle): Observable<any> {
-    return this.http.post<any>('http://localhost:8085/usr/selectSubtitle', subtitle, httpOptions)
+  selectRecentlySubtitle(usrId: String): Observable<any> {
+    return this.http.post<any>('http://localhost:8085/subtitle/selectUsrRecentlySttl', usrId, httpOptions)
     ;
   }
-
-  saveSubtitle (subtitle: Subtitle): Observable<any> {
-    return this.http.post<any>('http://localhost:8085/subtitle/saveSubtitle', subtitle, httpOptions)
+ 
+  saveUsrSubtitles (fd: FormData): Observable<any> {
+    return this.http.post<any>('http://localhost:8085/subtitle/saveUsrSubtitles', fd)
     ;
   }
-
-
-
 }
-
-
-/*
-Copyright 2017-2018 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

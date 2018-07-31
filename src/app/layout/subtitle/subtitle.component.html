@@ -22,19 +22,20 @@
 					</div>
 			  </div>
 				<div class="form-row">
-			    <button type="button" class="btn btn-success" (click)="onUpload()">Upload</button>
-			  </div>
-				<div class="form-row">
+			    <button type="button" class="btn btn-success" (click)="onUpload()">Upload</button> 
+			    <button type="button" class="btn btn-success" (click)="onSelectRecentlySubtitle()">Recently Subtitle</button>
 			    <button type="button" class="btn btn-success" (click)="onTest()">test1</button>
-			  </div>
-				<div class="form-row">
 			    <button type="button" class="btn btn-success" (click)="onTest2()">test2</button>
-			  </div>
-				<div class="form-row">
-			    <button type="button" class="btn btn-success" (click)="onTest3()">test3</button>
-			  </div>
-				<div class="form-row">
+			    <button type="button" class="btn btn-success" (click)="onTest3()">test2</button>
 			    <button type="button" class="btn btn-success" (click)="onTest4()">test4</button>
 			  </div>
+				<div class="form-row">
+					<label>Foreign subtitle</label>
+					<textarea class="form-control" rows="10">{{foreignSubtitle}}</textarea>
+		    </div>
+				<div class="form-row">
+					<label>Mother subtitle</label>
+					<textarea class="form-control" rows="10">{{motherSubtitle}}</textarea>
+		    </div> 
 			</form>
     </div>

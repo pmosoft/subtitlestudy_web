@@ -9,7 +9,6 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-
 @Component({
   selector: 'app-subtitle',
   templateUrl: './subtitle.component.html',
@@ -27,9 +26,11 @@ export class SubtitleComponent implements OnInit {
   usrId = 'lifedomy@gmail.com';
   foreignFile = null;
   foreignFileNm = "Choose Srt or Smi File";
+  foreignSubtitle = "";
   motherFile = null;
   motherFileNm = "Choose Srt or Smi File";
-
+  motherSubtitle = "";
+ 
   onForeignFileSelected(event) {
     this.foreignFile = <File> event.target.files[0];
     this.foreignFileNm = this.foreignFile.name;
@@ -52,19 +53,32 @@ export class SubtitleComponent implements OnInit {
   }
     
   onUpload() {
-
     const fd = new FormData();
     fd.append('uploadFile', this.foreignFile);
     fd.append('uploadFile2', this.motherFile);
-    fd.append('usr', "lifedomy");
+    fd.append('usrEmail', "lifedomy@gmail.com");
     //study english using sutitles (foreign and self)
-    //this.http.post('http://localhost:8085/subtitle/test3',"")
-    this.http.post('http://localhost:8085/subtitle/saveUsrSubtitles',fd)
-    //this.http.post('http://localhost:8085/dams/code/selectCodeExtList?searchValue=',fd)
-    .subscribe(res => {
-      console.log("   1111111111111111111");
-      //console.log(res);
-    });    
+    this.subtitleService.saveUsrSubtitles(fd).subscribe(result => {
+      if(!result.isSuccess) alert(result.errUsrMsg)
+      else {
+        this.foreignSubtitle = result.foreignSubtitle;  
+        this.motherSubtitle = result.motherSubtitle; 
+        console.log(result.usrMsg);  
+      }  
+  });  
+  }
+
+
+  onSelectRecentlySubtitle() {
+    this.subtitleService.selectRecentlySubtitle(this.usrId)
+    .subscribe(result => {
+      if(!result.isSuccess) alert(result.errUsrMsg)
+      else {
+        this.foreignSubtitle = result.foreignSubtitle;  
+        this.motherSubtitle = result.motherSubtitle; 
+        console.log(result.subtitleListVo);  
+      } 
+    });
   }
 
   getHeroes(): void {
