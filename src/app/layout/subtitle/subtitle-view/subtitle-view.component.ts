@@ -8,29 +8,25 @@ import { SubtitleService } from '../subtitle.service';
 })
 export class SubtitleViewComponent implements OnInit {
 
-  usrId = 'lifedomy@gmail.com';
-  fileNm = "";
-  foreignSubtitle = "";
-  motherSubtitle = "";
- 
   constructor(private subtitleService: SubtitleService) { }
 
   ngOnInit() {
   }
 
+  usrId = 'lifedomy@gmail.com';
+  foreignSubtitle = "";
+  motherSubtitle = "";
+
   onSelectRecentlySubtitle() {
-    alert("onSelectRecentlySubtitle");
     this.subtitleService.selectRecentlySubtitle(this.usrId)
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
       else {
-        this.fileNm = result.fileNm;  
         this.foreignSubtitle = result.foreignSubtitle;  
         this.motherSubtitle = result.motherSubtitle; 
-        console.log(result.usrMsg);  
+        console.log(result.subtitleListVo);  
       } 
     });
   }
-
 
 }

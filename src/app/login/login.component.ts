@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
                 alert(result.errUsrMsg);
             } else {
                 console.log("result.isSuccess=="+result.isSuccess);  
-                this.router.navigate(['/subtitle']);
-            }    
+                this.router.navigate(['/subtitle-regist']);
+            }     
         });
 
         localStorage.setItem('isLoggedin', 'true');

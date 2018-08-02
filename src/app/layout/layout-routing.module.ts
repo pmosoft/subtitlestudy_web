@@ -7,8 +7,9 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'subtitle' },
-            { path: 'subtitle', loadChildren: './subtitle/subtitle.module#SubtitleModule' },
+            { path: '', redirectTo: 'subtitle-regist' },
+            { path: 'subtitle-regist', loadChildren: './subtitle/subtitle-regist/subtitle-regist.module#SubtitleRegistModule' },
+            { path: 'subtitle-view', loadChildren: './subtitle/subtitle-view/subtitle-view.module#SubtitleViewModule' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },

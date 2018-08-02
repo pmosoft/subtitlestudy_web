@@ -1,3 +1,42 @@
-<p>
-  subtitle-regist works!
-</p>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="inputAddress">외국어 자막과 모국어 자막을 합성하여 출력합니다</label>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6">
+        <label for="inputAddress">Foreign Language</label>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" name="foreignFile" (change)="onForeignFileSelected($event)">
+        <label class="custom-file-label" for="customFile">{{foreignFileNm}}</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6">
+        <label for="inputAddress">Mother Language</label>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input"  name="motherFile" (change)="onMotherFileSelected($event)">
+        <label class="custom-file-label" for="customFile">{{motherFileNm}}</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <button type="button" class="btn btn-success" (click)="onUpload()">Upload</button> 
+      <button type="button" class="btn btn-success" (click)="onSelectRecentlySubtitle()">Recently Subtitle</button>
+      <button type="button" class="btn btn-success" (click)="onTest()">test1</button>
+      <button type="button" class="btn btn-success" (click)="onTest2()">test2</button>
+      <button type="button" class="btn btn-success" (click)="onTest3()">test2</button>
+      <button type="button" class="btn btn-success" (click)="onTest4()">test4</button>
+    </div>
+    
+    <div class="form-row">
+      <label>Foreign subtitle</label>
+      <textarea class="form-control" rows="10">{{foreignSubtitle}}</textarea>
+    </div>
+    <div class="form-row">
+      <label>Mother subtitle</label>
+      <textarea class="form-control" rows="10">{{motherSubtitle}}</textarea>
+    </div> 
+  </form>
+</div>
