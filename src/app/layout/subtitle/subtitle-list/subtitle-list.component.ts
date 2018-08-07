@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SubtitleService } from '../subtitle.service';
 
 @Component({
   selector: 'app-subtitle-list',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubtitleListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private subtitleService: SubtitleService) { }
 
   ngOnInit() {
   }
+
+  usrId = 'lifedomy@gmail.com';
+
+  onSelectUsrSttlMstrList() {
+    this.subtitleService.selectUsrSttlMstrList(this.usrId)
+    .subscribe(result => {
+      if(!result.isSuccess) alert(result.errUsrMsg)
+      else {
+        console.log(result.subtitleListVo);  
+      } 
+    });
+  }
+
+
 
 }
