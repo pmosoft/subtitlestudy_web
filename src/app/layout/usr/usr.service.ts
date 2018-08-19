@@ -17,22 +17,22 @@ export class UsrService {
   constructor(private http: HttpClient) {}
 
   insertUsr (usr: Usr): Observable<any> {
-    return this.http.post<any>('/usr/insertUsr', usr, httpOptions)
+    return this.http.post<any>('http://localhost:8085/usr/insertUsr', usr, httpOptions)
     ;
   }
   
   selectUsrLogin (usr: Usr): Observable<any> {
-    return this.http.post<any>('/usr/selectUsrLogin', usr, httpOptions)
+    return this.http.post<any>('http://localhost:8085/usr/selectUsrLogin', usr, httpOptions)
     ;
   }
 
   saveUsr (usr: Usr): Observable<any> {
-    return this.http.post<any>('/usr/saveUsr', usr, httpOptions)
+    return this.http.post<any>('http://localhost:8085/usr/saveUsr', usr, httpOptions)
     ;
   }
 
   addUsr2 (usr: Usr): Observable<Usr> {
-    return this.http.post<Usr>('/usr/saveUsr', usr, httpOptions)
+    return this.http.post<Usr>('http://localhost:8085/usr/saveUsr', usr, httpOptions)
     ;
   }
 

@@ -22,26 +22,26 @@ export class SubtitleService {
 
   /** GET heroes from the server */
   getHeroes (): Observable<Subtitle> {
-    return this.http.get<Subtitle>('/subtitle/test5');
+    return this.http.get<Subtitle>('http://localhost:8085/subtitle/test5');
   }
 
   selectUsrSttlMstrList(usrId: String): Observable<any> {
-    return this.http.post<any>('/subtitle/selectUsrSttlMstrList', usrId, httpOptions)
+    return this.http.post<any>('http://localhost:8085/subtitle/selectUsrSttlMstrList', usrId, httpOptions)
     ;
   }
 
   selectRecentlySubtitle(usrId: String): Observable<any> {
-    return this.http.post<any>('/subtitle/selectUsrRecentlySttl', usrId, httpOptions)
+    return this.http.post<any>('http://localhost:8085/subtitle/selectUsrRecentlySttl', usrId, httpOptions)
     ;
   }
  
   selectUsrSttlDtlList(usrId: String): Observable<any> {
-    return this.http.post<any>('/subtitle/selectUsrSttlDtlList', usrId, httpOptions)
+    return this.http.post<any>('http://localhost:8085/subtitle/selectUsrSttlDtlList', usrId, httpOptions)
     ;
   }
  
   saveUsrSubtitles (fd: FormData): Observable<any> {
-    return this.http.post<any>('/subtitle/saveUsrSubtitles', fd)
+    return this.http.post<any>('http://localhost:8085/subtitle/saveUsrSubtitles', fd)
     ;
   }
 }

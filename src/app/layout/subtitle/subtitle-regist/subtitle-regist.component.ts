@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit , Inject} from '@angular/core';
 import { SubtitleService } from '../subtitle.service';
 import { Subtitle } from '../subtitle';
 import { HttpHeaders } from '@angular/common/http';
-
+import { DOCUMENT } from '@angular/platform-browser';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -16,21 +15,27 @@ const httpOptions = {
 export class SubtitleRegistComponent implements OnInit {
 
 
-  subtitle: Subtitle;
-  constructor(private http: HttpClient,
-             private subtitleService: SubtitleService) { }
+  constructor(private subtitleService: SubtitleService,
+    @Inject(DOCUMENT) private document: any) { }
 
   ngOnInit() {
+    console.log(this.document.location.hostname);
+    console.log(this.document.location.port);
+
+
   }
 
-  usrId = 'lifedomy@gmail.com';
+  //usrId = 'lifedomy@gmail.com';
+  usrId = localStorage.getItem('usrId');
+
   foreignFile = null;
   foreignFileNm = "Choose Srt or Smi File";
   foreignSubtitle = "";
   motherFile = null;
   motherFileNm = "Choose Srt or Smi File";
   motherSubtitle = "";
- 
+
+  
   onForeignFileSelected(event) {
     this.foreignFile = <File> event.target.files[0];
     this.foreignFileNm = this.foreignFile.name;
@@ -53,104 +58,24 @@ export class SubtitleRegistComponent implements OnInit {
   }
     
   onUpload() {
+    //console.log("usrId================"+this.usrId);
+
     const fd = new FormData();
     fd.append('uploadFile', this.foreignFile);
     fd.append('uploadFile2', this.motherFile);
-    fd.append('usrEmail', "lifedomy@gmail.com");
+    fd.append('usrEmail', this.usrId);
     //study english using sutitles (foreign and self)
     this.subtitleService.saveUsrSubtitles(fd).subscribe(result => {
-      if(!result.isSuccess) alert(result.errUsrMsg)
-      else {
+      if(!result.isSuccess) {
+        alert(result.errUsrMsg); 
+        console.log("errSysMsg====="+result.errSysMsg);
+
+      } else {
         this.foreignSubtitle = result.foreignSubtitle;  
         this.motherSubtitle = result.motherSubtitle; 
         console.log(result.usrMsg);  
       }  
-  });  
+    });  
   }
-
-
-  onSelectRecentlySubtitle() {
-    this.subtitleService.selectRecentlySubtitle(this.usrId)
-    .subscribe(result => {
-      if(!result.isSuccess) alert(result.errUsrMsg)
-      else {
-        this.foreignSubtitle = result.foreignSubtitle;  
-        this.motherSubtitle = result.motherSubtitle; 
-        console.log(result.subtitleListVo);  
-      } 
-    });
-  }
-
-  getHeroes(): void {
-    this.subtitleService.getHeroes()
-    .subscribe(data => {
-      this.subtitle = data
-      console.log(data);
-      console.log(this.subtitle.name);
-    });
-  }
-
-  onTest2() {
-    this.subtitleService.getHeroes()
-    .subscribe(data => {
-      this.subtitle = data
-      console.log(data);
-      console.log(this.subtitle.name);
-    });
-  }
-
-
-  onTest3() {
-    //this.getHeroes();
-    //const params = new HttpParams().set('lang', lang); 
-
-    const fd = new FormData();
-    fd.append('name', "lifedomy");
-    fd.append('id', "123");
-    this.http.post('http://localhost:8085/subtitle/test4',fd)
-    .subscribe(res => {
-      console.log("1111111111111111111");
-      console.log(res);
-      
-    });    
- }
-
-
-  onTest4() {
-
-    this.http.get('http://localhost:8085/subtitle/test4/?name=abc&id=10')
-    .subscribe(res => {
-      console.log("1111111111111111111");
-      console.log(res);
-    });   
-   
-  }
-
-  onTest() {
-    this.getHeroes();
-    // const fd = new FormData();
-    // fd.append('uploadFile', this.foreignFile);
-    // fd.append('uploadFile2', this.motherFile);
-    // fd.append('usr', "lifedomy");
-    // console.log("1111111111111111111");
-    //console.log(this.http.get('http://localhost:8085/subtitle/test3',{responseType: 'json'}));
-
-    // this.http.get('http://localhost:8085/subtitle/test3')
-    // .subscribe(res => {
-    //   console.log("1111111111111111111");
-    //   console.log(res);
-    //});   
-    
-    // this.http.post('http://localhost:8080/order/addtocart', 
-    // '', 
-    // httpOptions)
-    // .subscribe(data => {
-    //     // Handle the updated data here.
-    //     console.log(data);
-    // });
-
-
-  }
-
 
 }

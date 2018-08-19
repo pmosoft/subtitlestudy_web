@@ -13,7 +13,9 @@ export class SubtitleViewMotherComponent implements OnInit {
   ngOnInit() {
   }
 
-  usrId = 'lifedomy@gmail.com';
+  //usrId = 'lifedomy@gmail.com';
+  usrId = localStorage.getItem('usrId');
+
   foreignSubtitle = "";
   motherSubtitle = "";
 
