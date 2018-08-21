@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubtitleService } from '../subtitle.service';
 import { Subtitle } from '../subtitle';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subtitle-list',
@@ -9,7 +10,8 @@ import { Subtitle } from '../subtitle';
 })
 export class SubtitleListComponent implements OnInit {
 
-  constructor(private subtitleService: SubtitleService) { }
+  constructor(private subtitleService: SubtitleService
+             ,private router: Router) { }
 
   ngOnInit() {
     this.onSelectUsrSttlMstrList();
@@ -30,6 +32,10 @@ export class SubtitleListComponent implements OnInit {
     });
   }
 
-
+  onClick(subtitle: Subtitle) {
+    
+    console.log("subtitle.sttlNm=="+subtitle.sttlNm);
+    this.router.navigate(['/subtitle-view/'+subtitle.sttlNm]);
+  }
 
 }

@@ -21,13 +21,13 @@ export class UsrComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveUsr(usr) {
+  saveUsr(usr : Usr) {
     console.log("saveUsr start")
     console.log("usrEmail=="+usr.usrEmail);     
     console.log("usrPw=="+usr.usrPw);   
     console.log("usrPw2=="+usr.usrPw2);  
     
-    this.result = this.usrService.saveUsr(usr as Usr)
+    this.result = this.usrService.saveUsr(usr)
       .subscribe(result => {
         console.log("result=="+result.isSuccess);
         console.log("result=="+result.errUsrMsg);
@@ -70,7 +70,7 @@ export class UsrComponent implements OnInit {
     });
   }    
 
-  selectUsr(usrEmail) {
+  selectUsr(usrEmail : string) {
     console.log("selectUsr start")    
     const fd = new FormData();
     fd.append('usrEmail', usrEmail);
@@ -80,7 +80,7 @@ export class UsrComponent implements OnInit {
     });    
   }
 
-  selectUsrLogin(usrEmail,usrPw) {
+  selectUsrLogin(usrEmail : string ,usrPw : string) {
     console.log("selectUsrLogin start")    
     const fd = new FormData();
     fd.append('usrEmail', usrEmail);
