@@ -2,7 +2,7 @@
 <ul class="usrSttlVoList">
   <li *ngFor="let usrSttlVo of usrSttlVoList"
     [class.selected]="usrSttlVo === selectedUsrSttlVo"
-    (click)="onSelect(usrSttlVo)">
-    <span class="badge">{{usrSttlVo.usrId}}</span> {{usrSttlVo.usrId}}
+    (click)="onClick(usrSttlVo)">
+    <span class="badge">{{usrSttlVo.sttlNm}}</span> {{usrSttlVo.sttlNm}}
   </li>
 </ul>

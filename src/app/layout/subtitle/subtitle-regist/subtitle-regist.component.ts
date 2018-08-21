@@ -1,8 +1,7 @@
-import { Component, OnInit , Inject} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { SubtitleService } from '../subtitle.service';
 import { Subtitle } from '../subtitle';
 import { HttpHeaders } from '@angular/common/http';
-import { DOCUMENT } from '@angular/platform-browser';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -15,14 +14,9 @@ const httpOptions = {
 export class SubtitleRegistComponent implements OnInit {
 
 
-  constructor(private subtitleService: SubtitleService,
-    @Inject(DOCUMENT) private document: any) { }
+  constructor(private subtitleService: SubtitleService) { }
 
   ngOnInit() {
-    console.log(this.document.location.hostname);
-    console.log(this.document.location.port);
-
-
   }
 
   //usrId = 'lifedomy@gmail.com';
