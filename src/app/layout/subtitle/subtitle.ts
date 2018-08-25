@@ -1,5 +1,4 @@
 export class Subtitle {
-
   usrId    : string; // 사용자아이디    
   usrEmail : string; // 사용자이메일    
   sttlNm   : string; // 자막명      
@@ -13,23 +12,4 @@ export class Subtitle {
   regUsrId : string; // 등록자
   updDtm   : string; // 변경일시
   updUsrId : string; // 변경자
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
