@@ -17,12 +17,14 @@ export class SubtitleListComponent implements OnInit {
     this.onSelectUsrSttlMstrList();
   }
 
+  subtitleInVo: Subtitle = new Subtitle();
   usrSttlVoList: Subtitle[]
 
   usrId = localStorage.getItem('usrId');
 
   onSelectUsrSttlMstrList() {
-    this.subtitleService.selectUsrSttlMstrList(this.usrId)
+    this.subtitleInVo.usrId = this.usrId;
+    this.subtitleService.selectUsrSttlMstrList(this.subtitleInVo)
     .subscribe(result => {
        if(!result.isSuccess) alert(result.errUsrMsg)
       else {

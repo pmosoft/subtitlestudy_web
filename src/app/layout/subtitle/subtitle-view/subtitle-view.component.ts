@@ -54,7 +54,8 @@ export class SubtitleViewComponent implements OnInit {
   }
 
   onSelectRecentlySubtitle() {
-    this.subtitleService.selectRecentlySubtitle(this.usrId)
+    this.subtitle.usrId = this.usrId;
+    this.subtitleService.selectRecentlySubtitle(this.subtitle)
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
       else {

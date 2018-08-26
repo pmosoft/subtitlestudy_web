@@ -25,21 +25,21 @@ export class SubtitleService {
     return this.http.get<Subtitle>('http://'+this.document.location.hostname+':8085/subtitle/test5');
   }
 
-  selectUsrSttlMstrList(usrId: String): Observable<any> {
-    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttlMstrList', usrId, httpOptions);
+  selectUsrSttlMstrList(subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttlMstrList', subtitle, httpOptions);
   }
 
   selectUsrSttl(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttl', subtitle, httpOptions);
   }
  
-  selectRecentlySubtitle(usrId: String): Observable<any> {
-    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrRecentlySttl', usrId, httpOptions)
+  selectRecentlySubtitle(subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrRecentlySttl', subtitle, httpOptions)
     ;
   }
  
-  selectUsrSttlDtlList(usrId: String): Observable<any> {
-    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttlDtlList', usrId, httpOptions)
+  selectUsrSttlDtlList(subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttlDtlList', subtitle, httpOptions)
     ;
   }
  
