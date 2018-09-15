@@ -4,15 +4,13 @@ import { Subtitle } from '../subtitle';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-subtitle-view',
-  templateUrl: './subtitle-view.component.html',
-  styleUrls: ['./subtitle-view.component.scss']
+  selector: 'app-subtitle-site',
+  templateUrl: './subtitle-site.component.html',
+  styleUrls: ['./subtitle-site.component.scss']
 })
-export class SubtitleViewComponent implements OnInit {
+export class SubtitleSiteComponent implements OnInit {
 
   subtitle : Subtitle = new Subtitle();
-  foreignSubtitle : Subtitle[];
-  motherSubtitle : Subtitle[];
   usrId : string;
 
   constructor(private subtitleService: SubtitleService
@@ -31,6 +29,8 @@ export class SubtitleViewComponent implements OnInit {
   //usrId = 'lifedomy@gmail.com';
   //usrId = localStorage.getItem('usrId');
   
+  foreignSubtitle = "";
+  motherSubtitle = "";
 
   onSelectUsrSttl() {
   
@@ -48,7 +48,7 @@ export class SubtitleViewComponent implements OnInit {
        else {
         this.foreignSubtitle = result.foreignSubtitle;  
         this.motherSubtitle = result.motherSubtitle; 
-        //console.log(result.subtitleListVo);  
+        console.log(result.subtitleListVo);  
       } 
     });
   }

@@ -23,6 +23,10 @@ export class SubtitleViewMotherComponent implements OnInit {
   foreignSubtitle = "";
   motherSubtitle = "";
 
+  customTB(index, item) {
+    return `${index}-${item.xrow}-${item.yplace}`
+  }
+
   onSelectRecentlySubtitle() {
     this.subtitleInVo.usrId = this.usrId;
     this.subtitleInVo.sttlCd = "2";    

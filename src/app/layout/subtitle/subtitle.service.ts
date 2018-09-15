@@ -20,6 +20,10 @@ export class SubtitleService {
   constructor(private http: HttpClient
              ,@Inject(DOCUMENT) private document: any) { }
 
+  saveUsrSubtitles (fd: FormData): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveUsrSubtitles', fd);
+  }
+
   /** GET heroes from the server */
   getHeroes (): Observable<Subtitle> {
     return this.http.get<Subtitle>('http://'+this.document.location.hostname+':8085/subtitle/test5');
@@ -43,8 +47,4 @@ export class SubtitleService {
     ;
   }
  
-  saveUsrSubtitles (fd: FormData): Observable<any> {
-    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveUsrSubtitles', fd)
-    ;
-  }
 }

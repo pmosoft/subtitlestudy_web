@@ -4,6 +4,7 @@ export class Subtitle {
   sttlNm   : string; // 자막명      
   fsttlNm  : string; // 외국어자막명      
   msttlNm  : string; // 모국어자막명
+  sttlNum  : number;    // 자막순번 
   sttlCd   : string; // 자막구분(1:외국어,2:모국어) 
   sttlStm  : string; // 자막시작시각      	 
   sttlEtm  : string; // 자막종료시각      	 

@@ -1,8 +1,13 @@
-<h2>My Subtitle List</h2>
-<ul class="usrSttlVoList">
-  <li *ngFor="let usrSttlVo of usrSttlVoList"
+<div class="card mb-1 ">
+  <div class="card-header text-center">
+    My Subtitle List
+  </div>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item-action" *ngFor="let usrSttlVo of usrSttlVoList"
     [class.selected]="usrSttlVo === selectedUsrSttlVo"
     (click)="onClick(usrSttlVo)">
-    <span class="badge">{{usrSttlVo.sttlNm}}</span> {{usrSttlVo.sttlNm}}
+    {{usrSttlVo.sttlNm}}
   </li>
 </ul>

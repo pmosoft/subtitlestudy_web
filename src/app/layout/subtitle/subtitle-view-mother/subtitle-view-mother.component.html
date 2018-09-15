@@ -1,26 +1,11 @@
-<div class="container">
-  <form>
-    <div class="form-row">
-      <button type="button" class="btn btn-outline-primary mb-3 mr-2" (click)="onSelectRecentlySubtitle()">Recently Subtitle</button>
-      <button type="button" class="btn btn-outline-primary mb-3 mr-2" [routerLink]="['/subtitle-view/blank']">View</button>
-      <button type="button" class="btn btn-outline-primary mb-3 mr-2" [routerLink]="['/subtitle-list']">Back to List</button>
-    </div>
-    <!--
-    <div class="form-row">
-      <label>Mother subtitle</label>
-      <textarea class="form-control" rows="20">{{motherSubtitle}}</textarea>
-    </div>
-    -->
-    
-    <div class="form-row">
-      <ul class="subtitleListVo">
-        <li *ngFor="let subtitle of subtitleListVo"
-          [class.selected]="subtitle === selectedSubtitle"
-          (click)="onClick(subtitle)">
-          <h5><span class="badge">{{subtitle.sttlDesc}}</span></h5>
-        </li>
-      </ul>
-    </div>
+<button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" (click)="onSelectRecentlySubtitle()">Recent</button>
+<button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" [routerLink]="['/subtitle-view/blank']">View</button>
+<button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" [routerLink]="['/subtitle-list']">List</button>
 
-  </form>
-</div>
+<ul class="list-group">
+  <li class="list-group-item list-group-item-action " *ngFor="let subtitle of subtitleListVo;"
+    [class.selected]="subtitle === selectedSubtitle"
+    (click)="onClick(subtitle)">
+    [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+  </li>
+</ul>

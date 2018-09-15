@@ -1,10 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SubtitleService } from '../subtitle.service';
 import { Subtitle } from '../subtitle';
-import { HttpHeaders } from '@angular/common/http';
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subtitle-regist',
@@ -14,7 +11,8 @@ const httpOptions = {
 export class SubtitleRegistComponent implements OnInit {
 
 
-  constructor(private subtitleService: SubtitleService) { }
+  constructor(private subtitleService: SubtitleService
+             ,private router: Router) {}
 
   ngOnInit() {
   }
@@ -52,8 +50,6 @@ export class SubtitleRegistComponent implements OnInit {
   }
     
   onUpload() {
-    //console.log("usrId================"+this.usrId);
-
     const fd = new FormData();
     fd.append('uploadFile', this.foreignFile);
     fd.append('uploadFile2', this.motherFile);
@@ -65,9 +61,10 @@ export class SubtitleRegistComponent implements OnInit {
         console.log("errSysMsg====="+result.errSysMsg);
 
       } else {
-        this.foreignSubtitle = result.foreignSubtitle;  
-        this.motherSubtitle = result.motherSubtitle; 
-        console.log(result.usrMsg);  
+        //this.foreignSubtitle = result.foreignSubtitle;  
+        //this.motherSubtitle = result.motherSubtitle; 
+        this.router.navigate(['/subtitle-view/'+result.sttlNm]);
+        //console.log(result.usrMsg);  
       }  
     });  
   }
