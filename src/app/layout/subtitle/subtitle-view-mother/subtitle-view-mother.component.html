@@ -1,16 +1,22 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" (click)="onSelectRecentlySubtitle()">Recent</button>
-    <button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" [routerLink]="['/subtitle-view/blank']">View</button>
-    <button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" [routerLink]="['/subtitle-list']">List</button>
-  </div>
-  <div class="row">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-action " *ngFor="let subtitle of subtitleListVo;"
-        [class.selected]="subtitle === selectedSubtitle"
-        (click)="onClick(subtitle)">
-        [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
-      </li>
-    </ul>
+
+  
+  <div class="chat-panel card">
+    <div class="card-header">
+        Mother Subtitle
+        <button type="button" class="btn btn-outline-primary btn-sm mr-2" (click)="onSelectRecentlySubtitle()">Recent</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mr-2" [routerLink]="['/subtitle-view/blank']">View</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mr-2" [routerLink]="['/subtitle-list']">List</button>
+      </div>
+    <div class="">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action" *ngFor="let subtitle of subtitleListVo;"
+            [class.selected]="subtitle === selectedSubtitle"
+            (click)="onClick(subtitle)">
+            [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
+    

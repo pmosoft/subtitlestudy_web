@@ -1,13 +1,15 @@
-<div class="card mb-1 ">
-  <div class="card-header text-center">
-    My Subtitle List
+<!-- <div class="container"> -->
+  <div class="card mb-1 ">
+    <div class="card-header   text-center">
+      My Subtitle List
+    </div>
   </div>
-</div>
 
-<ul class="list-group">
-  <li class="list-group-item list-group-item-action" *ngFor="let usrSttlVo of usrSttlVoList"
-    [class.selected]="usrSttlVo === selectedUsrSttlVo"
-    (click)="onClick(usrSttlVo)">
-    {{usrSttlVo.sttlNm}}
-  </li>
-</ul>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-action" *ngFor="let usrSttlVo of usrSttlVoList"
+      [class.selected]="usrSttlVo === selectedUsrSttlVo"
+      (click)="onClick(usrSttlVo)">
+      {{usrSttlVo.sttlNm}}
+    </li>
+  </ul>
+<!-- </div> -->
