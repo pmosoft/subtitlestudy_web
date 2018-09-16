@@ -10,7 +10,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'subtitle-regist' },
             { path: 'subtitle-regist', loadChildren: './subtitle/subtitle-regist/subtitle-regist.module#SubtitleRegistModule' },
             { path: 'subtitle-view/:sttlNm', loadChildren: './subtitle/subtitle-view/subtitle-view.module#SubtitleViewModule' },
-            { path: 'subtitle-view-mother', loadChildren: './subtitle/subtitle-view-mother/subtitle-view-mother.module#SubtitleViewMotherModule' },
+            { path: 'subtitle-view-mother/:sttlNm', loadChildren: './subtitle/subtitle-view-mother/subtitle-view-mother.module#SubtitleViewMotherModule' },
             { path: 'subtitle-list', loadChildren: './subtitle/subtitle-list/subtitle-list.module#SubtitleListModule' },
             { path: 'subtitle-site', loadChildren: './subtitle/subtitle-site/subtitle-site.module#SubtitleSiteModule' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },

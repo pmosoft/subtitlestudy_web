@@ -1,9 +1,16 @@
 <!-- <div class="container"> -->
   <div class="card mb-1 ">
-    <div class="card-header   text-center">
-      My Subtitle List
-    </div>
-  </div>
+    <div class="card-header">
+      <div class="clearfix">
+        <div class="float-left">My Subtitle List</div>
+        <div class="float-right">
+          <select (change)="onChange($event.target.value)" class="btn btn-outline-primary btn-sm mr-2"> 
+              <option *ngFor="let view of condViewCd" [value]="view.id" >{{view.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>    
+  </div> 
 
   <ul class="list-group">
     <li class="list-group-item list-group-item-action" *ngFor="let usrSttlVo of usrSttlVoList"

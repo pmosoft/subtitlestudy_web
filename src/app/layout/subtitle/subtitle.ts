@@ -4,7 +4,7 @@ export class Subtitle {
   sttlNm   : string; // 자막명      
   fsttlNm  : string; // 외국어자막명      
   msttlNm  : string; // 모국어자막명
-  sttlNum  : number;    // 자막순번 
+  sttlNum  : number; // 자막순번 
   sttlCd   : string; // 자막구분(1:외국어,2:모국어) 
   sttlStm  : string; // 자막시작시각      	 
   sttlEtm  : string; // 자막종료시각      	 
@@ -13,4 +13,8 @@ export class Subtitle {
   regUsrId : string; // 등록자
   updDtm   : string; // 변경일시
   updUsrId : string; // 변경자
+
+  condSttlNum : string = "0"; // 조회조건:자막순번 
+  condSttlCd  : string = "0"; // 조회조건:자막구분 
+  condBookmarkYn : string = "Y"; // 조회조건:책갈피여부 
 }

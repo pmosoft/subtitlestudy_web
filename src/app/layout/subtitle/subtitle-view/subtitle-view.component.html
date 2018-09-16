@@ -1,82 +1,59 @@
-<!-- 
-<div class="container">
-  <button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" (click)="onSelectRecentlySubtitle()">Recent</button>
-  <button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" [routerLink]="['/subtitle-view-mother']">Mother View</button>
-  <button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" [routerLink]="['/subtitle-list']">List</button>
-  
-  <div class="row">
-    <div class="col">
-      <label>Foreign subtitle</label>
-    <li class="list-group-item list-group-item-action " *ngFor="let subtitle of foreignSubtitle;"
-      [class.selected]="subtitle === selectedSubtitle"
-      (click)="onClick(subtitle)">
-      [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
-    </li>
-    </div>
-    <div class="col">
-      <label>Mother subtitle</label>
-      <li class="list-group-item list-group-item-action " *ngFor="let subtitle of motherSubtitle;"
-    [class.selected]="subtitle === selectedSubtitle"
-    (click)="onClick(subtitle)">
-    [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
-  </li>
-    </div>
-  </div>
-</div> -->
-
-<div class="container">
-
-<button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" (click)="onSelectRecentlySubtitle()">Recent</button>
-<button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" [routerLink]="['/subtitle-view-mother']">Mother View</button>
-<button type="button" class="btn btn-outline-primary mb-3 mr-2 btn-sm" [routerLink]="['/subtitle-list']">List</button>
-
-<div class="chat-panel card">
-  <div class="card-header">
-     Foreign Subtitle
-  </div>
-  <div class="">
-    <ul class="chat">
-      <li class="clearfix" *ngFor="let subtitle of foreignSubtitle;"
-          [class.selected]="subtitle === selectedSubtitle"
-          (click)="onClick(subtitle)">
-          [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
-      </li>
-    </ul>
-  </div>
-</div>
-
-<div class="mb-2"></div>
-
-<div class="chat-panel card">
-    <div class="card-header">
-       Mother Subtitle
-    </div>
-    <div class="">
-        <ul class="chat">
-          <li class="clearfix" *ngFor="let subtitle of motherSubtitle;"
-              [class.selected]="subtitle === selectedSubtitle"
-              (click)="onClick(subtitle)">
-              [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
-          </li>
-        </ul>
-      </div>
-  </div>
-</div>
-
-<!-- 
-<li class="left clearfix">
-    <span class="chat-img pull-left">
-        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-    </span>
-    <div class="chat-body clearfix">
-        <div class="header">
-            <strong class="primary-font">Jack Sparrow</strong>
-            <small class="pull-right text-muted">
-                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-            </small>
+<div class="container-fluid">
+  <div class="row" >
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="clearfix">
+            <div class="float-left">View Subtitles</div>
+            <div class="float-right">
+              <!-- <select (change)="onChange($event.target.value)" class="btn btn-outline-primary btn-sm mr-2"> 
+                  <option *ngFor="let sttlNum of sel_sttlNum" [value]="sttlNum.id" >{{sttlNum.name}}</option>
+              </select> -->
+              <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlAll()">All</button>
+              <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmark()">Mark</button>
+              <!-- <button type="button" class="btn btn-outline-primary mr-2 btn-sm" [routerLink]="['/subtitle-view-mother/:blank']">v2</button>
+               -->
+              <button type="button" class="btn btn-outline-primary mr-2 btn-sm" [routerLink]="['/subtitle-list']">
+                <i class="fa fa-tasks fa-fw"></i> List
+              </button>
+            </div>
+          </div>
         </div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-        </p>
+      </div>
     </div>
-</li> -->
+  </div>
+
+  <div class="row  row-first">
+    <div class="col-xl-6 col-lg-12">
+      <div class="chat-panel card">
+        <div class="">
+          <ul class="chat">
+            <li class="list-group-item list-group-item-action" *ngFor="let subtitle of foreignSubtitle;"
+                [class.selected]="subtitle === selectedSubtitle"
+                (dblclick)="onSaveSttlNum(subtitle)">
+                [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>  
+ 
+    <div class="col-xl-6 col-lg-12">
+      <div class="chat-panel card">
+          <div class="">
+              <ul class="chat">
+                <li class="list-group-item list-group-item-action" *ngFor="let subtitle of motherSubtitle;"
+                    [class.selected]="subtitle === selectedSubtitle"
+                    (dblclick)="onSaveSttlNum(subtitle)">
+                    [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+                </li>
+              </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <div class="mb-2"></div> -->
+
+
+</div>

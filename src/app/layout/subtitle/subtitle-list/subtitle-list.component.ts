@@ -10,6 +10,13 @@ import { Router } from '@angular/router';
 })
 export class SubtitleListComponent implements OnInit {
 
+  condViewCd = [
+    {id: 1, name: "v1"},
+    {id: 2, name: "v2"}
+  ];  
+
+  selectedValue : string = "1";
+
   constructor(private subtitleService: SubtitleService
              ,private router: Router) { }
 
@@ -22,6 +29,12 @@ export class SubtitleListComponent implements OnInit {
 
   usrId = localStorage.getItem('usrId');
 
+  onChange(deviceValue) {
+    console.log(deviceValue);
+    this.selectedValue = deviceValue;
+    console.log(this.selectedValue);
+  }
+  
   onSelectUsrSttlMstrList() {
     this.subtitleInVo.usrId = this.usrId;
     this.subtitleService.selectUsrSttlMstrList(this.subtitleInVo)
@@ -37,7 +50,11 @@ export class SubtitleListComponent implements OnInit {
   onClick(subtitle: Subtitle) {
     
     console.log("subtitle.sttlNm=="+subtitle.sttlNm);
-    this.router.navigate(['/subtitle-view/'+subtitle.sttlNm]);
+    if(this.selectedValue=="1") {
+      this.router.navigate(['/subtitle-view/'+subtitle.sttlNm]);
+    } else {
+      this.router.navigate(['/subtitle-view-mother/'+subtitle.sttlNm]);
+    }
   }
 
 }

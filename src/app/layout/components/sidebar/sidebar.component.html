@@ -1,10 +1,10 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <div class="list-group">
-        <a routerLink="/subtitle-view/:blank" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Recently Subtitle' | translate }}
+        <a routerLink="/subtitle-view/:sttlNm" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Subtitle View1' | translate }}
         </a> 
-        <a routerLink="/subtitle-view-mother" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Recently Subtitle(M)' | translate }}
+        <a routerLink="/subtitle-view-mother/:sttlNm" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Subtitle View2' | translate }}
         </a>
         <a routerLink="/subtitle-list" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'My Subtitles' | translate }}

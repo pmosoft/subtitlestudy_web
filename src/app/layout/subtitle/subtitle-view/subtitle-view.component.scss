@@ -1,18 +1,39 @@
+.container-fluid {
+    height: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  .row-first {
+    height:80%;
+    overflow: hidden;
+  }
+
+// .card-header{
+//     margin-top: 5px;
+//     margin-bottom: 5px;
+// }
 .chat-panel{
     .chat{
-        height: 300px;
+        height: 200px;
         overflow-y: auto;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        padding: 0 0 0 0;
+        list-style: none;
+        //li{
+            //margin-bottom: 10px;
+            //margin-right: 15px;
+            //padding-bottom: 5px;
+            //border-bottom: 1px dotted #999;
+        //}
+    }    
+    .chat2{
         margin-top: 15px;
         margin-left: 15px;
         margin-bottom: 15px;
         padding: 0 0 0 0;
-        list-style: none;
-        li{
-            margin-bottom: 10px;
-            margin-right: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px dotted #999;
-        }
     }
 }
 .container{
@@ -20,8 +41,8 @@
 }
 
 .li{
-        margin-bottom: 10px;
-        margin-right: 15px;
-        padding-bottom: 5px;
-        border-bottom: 1px dotted #999;
-    }
+    margin-bottom: 10px;
+    margin-right: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #999;
+}

@@ -23,6 +23,9 @@ export class SubtitleService {
   saveUsrSubtitles (fd: FormData): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveUsrSubtitles', fd);
   }
+  saveSttlNum(subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveSttlNum', subtitle, httpOptions);
+  }
 
   /** GET heroes from the server */
   getHeroes (): Observable<Subtitle> {
