@@ -1,17 +1,14 @@
-<div class="container">
-  <form>
-    <div class="form-row">
-      <button type="button" class="btn btn-outline-primary mb-3 mr-2" (click)="onSelectRecentlySubtitle()">Recently Subtitle</button>
-      <button type="button" class="btn btn-outline-primary mb-3 mr-2" [routerLink]="['/subtitle-site-mother']">Mother Site</button>
-      <button type="button" class="btn btn-outline-primary mb-3 mr-2" [routerLink]="['/subtitle-list']">Back to List</button>
-    </div>
-    <div class="form-row">
-      <label>Foreign subtitle</label>
-      <textarea class="form-control" rows="10">{{foreignSubtitle}}</textarea>
-    </div>
-    <div class="form-row">
-      <label>Mother subtitle</label>
-      <textarea class="form-control" rows="10">{{motherSubtitle}}</textarea>
-    </div> 
-  </form>
-</div>
+<!-- <div class="container"> -->
+  <div class="card mb-1 ">
+    <div class="card-header">
+        <div class="text-center">Suggested Sites</div>
+    </div>    
+  </div> 
+
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-action" *ngFor="let site of sites"
+      (click)="onClick(site)">
+      <a href={{site.url}} target="_blank">{{site.url}}</a>      
+    </li>
+  </ul>
+<!-- </div> -->

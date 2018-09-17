@@ -51,30 +51,26 @@ export class SubtitleViewMotherComponent implements OnInit {
     console.log("selectedValue=="+this.selectedValue);
 
     const sttlNm = this.route.snapshot.paramMap.get('sttlNm');
-    if(sttlNm==":blank"){
-      this.onSelectRecentlySubtitle();
-    } else {
-      console.log("sttlNm=="+sttlNm);
-      console.log("usrId1=="+localStorage.getItem('usrId'));
-      console.log("usrId2=="+this.usrId);
+    console.log("sttlNm=="+sttlNm);
+    console.log("usrId1=="+localStorage.getItem('usrId'));
+    console.log("usrId2=="+this.usrId);
 
-      this.subtitle.usrId = this.usrId;
-      this.subtitle.sttlNm = sttlNm;
-      this.subtitle.condSttlCd = this.selectedValue;
-      this.subtitle.condSttlNum = "0";
-      this.subtitle.condBookmarkYn = "Y";
+    this.subtitle.usrId = this.usrId;
+    this.subtitle.sttlNm = sttlNm;
+    this.subtitle.condSttlCd = this.selectedValue;
+    this.subtitle.condSttlNum = "0";
+    this.subtitle.condBookmarkYn = "Y";
 
-      this.subtitleService.selectUsrSttl(this.subtitle)
-      .subscribe(result => {
-        if(!result.isSuccess) alert(result.errUsrMsg)
-        else {
-          this.foreignSubtitle = result.foreignSubtitle;  
-          this.motherSubtitle = result.motherSubtitle; 
-          this.subtitleListVo = result.subtitleListVo;
-          //console.log(result.subtitleListVo);  
-        } 
-      });
-    }
+    this.subtitleService.selectUsrSttl(this.subtitle)
+    .subscribe(result => {
+      if(!result.isSuccess) alert(result.errUsrMsg)
+      else {
+        this.foreignSubtitle = result.foreignSubtitle;  
+        this.motherSubtitle = result.motherSubtitle; 
+        this.subtitleListVo = result.subtitleListVo;
+        //console.log(result.subtitleListVo);  
+      } 
+    });
   }
 
 
@@ -93,8 +89,31 @@ export class SubtitleViewMotherComponent implements OnInit {
     });
   }
  
-  onClick() {
-    this.subtitleInVo.usrId = this.usrId;
+
+  onSelectUsrSttlAll() {
+    this.subtitle.condBookmarkYn = 'N';
+    this.onSelectUsrSttl();
+  }
+
+  onSelectUsrSttlBookmark() {
+    this.subtitle.condBookmarkYn = 'Y';
+    this.onSelectUsrSttl();
+  }
+
+
+  onSaveSttlNum(subtitle: Subtitle) {
+    console.log("subtitle.sttlNm=="+subtitle.sttlNm);
+    console.log("subtitle.sttlCd=="+subtitle.sttlCd);
+    console.log("subtitle.sttlNum=="+subtitle.sttlNum);
+
+
+    this.subtitleService.saveSttlNum(subtitle)
+    .subscribe(result => {
+      if(!result.isSuccess) alert(result.errUsrMsg)
+      else {
+        console.log("success");  
+      }  
+    });
   }
 
 

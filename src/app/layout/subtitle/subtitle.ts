@@ -14,7 +14,11 @@ export class Subtitle {
   updDtm   : string; // 변경일시
   updUsrId : string; // 변경자
 
-  condSttlNum : string = "0"; // 조회조건:자막순번 
-  condSttlCd  : string = "0"; // 조회조건:자막구분 
-  condBookmarkYn : string = "Y"; // 조회조건:책갈피여부 
+  condSttlNum : string = "0";    // 조회조건:자막순번 
+  condSttlCd  : string = "0";    // 조회조건:자막구분 
+  condBookmarkYn : string = "Y"; // 조회조건:북마크여부 
+
+	foreignQryNum : number = 0; // 외국어 북마크번호
+  motherQryNum  : number = 0; // 모국어 북마크번호
+  
 }

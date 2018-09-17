@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-header">
           <div class="clearfix">
-            <div class="float-left">View Subtitles</div>
+            <div class="float-left">Subtitle Views btitles</div>
             <div class="float-right">
               <!-- <select (change)="onChange($event.target.value)" class="btn btn-outline-primary btn-sm mr-2"> 
                   <option *ngFor="let sttlNum of sel_sttlNum" [value]="sttlNum.id" >{{sttlNum.name}}</option>
@@ -28,10 +28,15 @@
       <div class="chat-panel card">
         <div class="">
           <ul class="chat">
-            <li class="list-group-item list-group-item-action" *ngFor="let subtitle of foreignSubtitle;"
+            <li class="list-group-item list-group-item-action" 
+                *ngFor="let subtitle of foreignSubtitle"
                 [class.selected]="subtitle === selectedSubtitle"
                 (dblclick)="onSaveSttlNum(subtitle)">
                 [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+                <div class="text-center" *ngIf="subtitle.sttlNum == subtitle.foreignQryNum">
+                  <div class="mb-3"></div>
+                  <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmarkNext()">Bookmark-Next</button>
+                </div>
             </li>
           </ul>
         </div>
@@ -46,6 +51,10 @@
                     [class.selected]="subtitle === selectedSubtitle"
                     (dblclick)="onSaveSttlNum(subtitle)">
                     [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+                    <div class="text-center" *ngIf="subtitle.sttlNum == subtitle.motherQryNum">
+                      <div class="mb-3"></div>
+                      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmarkNext()">Bookmark-Next</button>
+                    </div>
                 </li>
               </ul>
             </div>
