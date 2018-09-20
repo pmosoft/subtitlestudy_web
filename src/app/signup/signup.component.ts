@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { routerTransition } from '../router.animations';
 import { Validators } from '@angular/forms';
 import { ValidationService } from './validation.service';
-import { AlertsService } from 'angular-alert-module';
+//import { AlertsService } from 'angular-alert-module';
 import { Usr } from '../layout/usr/usr';
 import { UsrService } from '../layout/usr/usr.service';
 
@@ -25,8 +25,7 @@ export class SignupComponent implements OnInit {
         updUsrId : ''
          };
     
-    constructor(private usrService: UsrService
-               ,private alerts: AlertsService) {
+    constructor(private usrService: UsrService) {
     }
       
     ngOnInit(): void {
@@ -46,7 +45,7 @@ export class SignupComponent implements OnInit {
         if(!ValidationService.emailValidator(this.usr.usrEmail)) return;
         if(!ValidationService.passwordValidator(this.usr.usrPw)) return;
         if(this.usr.usrPw != this.usr.usrPw2) {
-            alert("difference password and passwordConfirm");
+            //alert("difference password and passwordConfirm");
             return;          
         }
            

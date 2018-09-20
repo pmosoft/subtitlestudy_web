@@ -12,6 +12,9 @@ export class SidebarComponent {
     showMenu: string = '';
     pushRightClass: string = 'push-right';
 
+    usrNm = localStorage.getItem('usrNm');
+
+
     constructor(private translate: TranslateService, public router: Router) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');

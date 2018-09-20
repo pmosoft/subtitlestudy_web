@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
-import { AlertsModule } from 'angular-alert-module';
+//import { AlertsModule } from 'angular-alert-module';
 
 
 // AoT requires an exported function for factories
@@ -40,7 +40,7 @@ export const createTranslateLoader = (http: HttpClient) => {
                 deps: [HttpClient]
             }
         }),
-        AlertsModule.forRoot(),        
+        //AlertsModule.forRoot(),        
         AppRoutingModule
     ],
     declarations: [AppComponent],

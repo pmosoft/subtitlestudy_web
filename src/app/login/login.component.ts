@@ -12,11 +12,11 @@ import { UsrService } from '../layout/usr/usr.service';
 })
 export class LoginComponent implements OnInit {
     usr : Usr = {
-        usrId     : '',
-        usrEmail  : 'lifedomy@gmail.com',
-        usrPw     : '12345678',
-        usrPw2    : '12345678',
-        usrNm     : '',
+        usrId     : localStorage.getItem('usrId'),
+        usrEmail  : localStorage.getItem('usrEmail'),
+        usrPw     : localStorage.getItem('usrPw'),
+        usrPw2    : localStorage.getItem('usrPw'),
+        usrNm     : localStorage.getItem('usrNm'),
         usrAge    : '',
         useYn     : '',
         regUsrId : '',
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('isLoggedin', 'true');
                 localStorage.setItem('usrId', result.usr.usrId);
                 localStorage.setItem('usrEmail', result.usr.usrEmail);
+                localStorage.setItem('usrPw', result.usr.usrPw);
                 localStorage.setItem('usrNm', result.usr.usrNm);
 
                 this.router.navigate(['/subtitle-regist']);
