@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row" >
+ <div class="container">
+  <div class="row mb-2" >
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
@@ -14,7 +14,7 @@
               <!-- <button type="button" class="btn btn-outline-primary mr-2 btn-sm" [routerLink]="['/subtitle-view-mother/:blank']">v2</button>
                -->
               <button type="button" class="btn btn-outline-primary mr-2 btn-sm" [routerLink]="['/subtitle-list']">
-                <i class="fa fa-tasks fa-fw"></i> List
+                <i class="fa fa-tasks fa-fw"></i>
               </button>
             </div>
           </div>
@@ -22,47 +22,37 @@
       </div>
     </div>
   </div>
-
-  <div class="row  row-first">
-    <div class="col-xl-6 col-lg-12">
-      <div class="chat-panel card">
-        <div class="">
-          <ul class="chat">
-            <li class="list-group-item list-group-item-action" 
-                *ngFor="let subtitle of foreignSubtitle"
-                [class.selected]="subtitle === selectedSubtitle"
-                (dblclick)="onSaveSttlNum(subtitle)">
-                [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
-                <div class="text-center" *ngIf="subtitle.sttlNum == subtitle.foreignQryNum">
-                  <div class="mb-3"></div>
-                  <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmarkNext()">Bookmark-Next</button>
-                </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+ 
+  <div class="row">
+    <div class="col-xl-6 col-lg-12 mb-2">
+      <ul class="card chat">
+        <li class="list-group-item list-group-item-action" 
+            *ngFor="let subtitle of foreignSubtitle"
+            [class.selected]="subtitle === selectedSubtitle"
+            (dblclick)="onSaveSttlNum(subtitle)">
+            [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+            <div class="text-center" *ngIf="subtitle.sttlNum == subtitle.foreignQryNum">
+              <div class="mb-3"></div>
+              <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmarkNext()">Bookmark-Next</button>
+            </div>
+        </li>
+      </ul>
     </div>  
 
     <div class="col-xl-6 col-lg-12">
-      <div class="chat-panel card">
-          <div class="">
-              <ul class="chat">
-                <li class="list-group-item list-group-item-action" *ngFor="let subtitle of motherSubtitle;"
-                    [class.selected]="subtitle === selectedSubtitle"
-                    (dblclick)="onSaveSttlNum(subtitle)">
-                    [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
-                    <div class="text-center" *ngIf="subtitle.sttlNum == subtitle.motherQryNum">
-                      <div class="mb-3"></div>
-                      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmarkNext()">Bookmark-Next</button>
-                    </div>
-                </li>
-              </ul>
-            </div>
-      </div>
+      <ul class="card chat">
+        <li class="list-group-item list-group-item-action" *ngFor="let subtitle of motherSubtitle;"
+          [class.selected]="subtitle === selectedSubtitle"
+          (dblclick)="onSaveSttlNum(subtitle)">
+          [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+          <div class="text-center" *ngIf="subtitle.sttlNum == subtitle.motherQryNum">
+            <div class="mb-3"></div>
+            <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmarkNext()">Bookmark-Next</button>
+          </div>
+          </li>
+        </ul>
     </div>
-  </div>
 
-    <!-- <div class="mb-2"></div> -->
 
 
 </div>
