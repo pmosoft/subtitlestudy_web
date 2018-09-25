@@ -15,15 +15,22 @@
         <a routerLink="/subtitle-site" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Subtitle Site' | translate }}
         </a>
-        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
-        </a>
-        <a routerLink="/tables" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Tables' | translate }}
-        </a>
-        <a routerLink="/forms" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Forms' | translate }}
-        </a>
+        <!-- only admin menu -->
+        <div *ngIf="usrNm == 'lifedomy'">
+            <a routerLink="/subtitle-site" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Opinion' | translate }}
+            </a>            
+            <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
+            </a>
+            <a routerLink="/tables" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Tables' | translate }}
+            </a>
+            <a routerLink="/forms" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Forms' | translate }}
+            </a>
+        </div> 
+
         <div class="header-fields">
             <div class="nested-menu">
                 <a class="list-group-item" (click)="addExpandClass('profile')">

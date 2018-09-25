@@ -7,13 +7,22 @@
     list-style: none;    
 }
 
-@media all and(max-height: 640px)                       {.chat{height: 200px;}}
-@media all and(min-height: 641px) and(max-height: 800px){.chat{height: 250px;}}
-@media all and(min-height: 801px) and(max-height: 900px){.chat{height: 300px;}}
-@media all and(min-height: 901px) and(max-height:1024px){.chat{height: 350px;}}
-//@media all and(min-height:1001px) and(max-height:3000px){.chat{height:1000px;}}
-@media all and(min-height:1025px) and(max-height:1280px){.chat{height: 400px;}}
-@media all and(min-width:1024px)                        {.chat{height:1000px;}}
+@media all and (orientation:portrait) and (max-height: 640px)                         {.chat{height: 230px;}}
+@media all and (orientation:portrait) and (min-height: 641px) and (max-height: 800px) {.chat{height: 260px;}}
+@media all and (orientation:portrait) and (min-height: 801px) and (max-height: 900px) {.chat{height: 300px;}}
+@media all and (orientation:portrait) and (min-height: 901px) and (max-height:1000px) {.chat{height: 350px;}}
+@media all and (orientation:portrait) and (min-height:1001px) and (max-height:1100px) {.chat{height: 500px;}}
+@media all and (orientation:portrait) and (min-height:1101px)                         {.chat{height: 600px;}}
+
+@media all and (orientation:landscape) and (min-height: 320px) and (max-height: 359px) {.chat{height: 50px;}}
+@media all and (orientation:landscape) and (min-height: 360px) and (max-height: 500px) {.chat{height: 100px;}}
+@media all and (orientation:landscape) and (min-height: 501px) and (max-height: 600px) {.chat{height: 150px;}}
+@media all and (orientation:landscape) and (min-height: 601px) and (max-height: 620px) {.chat{height: 200px;}}
+@media all and (orientation:landscape) and (min-height: 621px) and (max-height: 800px) {.chat{height: 300px;}}
+@media all and (orientation:landscape) and (min-height: 801px) and (max-height: 900px) {.chat{height: 300px;}}
+@media all and (orientation:landscape) and (min-height: 901px) and (max-height:1000px) {.chat{height: 300px;}}
+@media all and (orientation:landscape) and (min-height:1001px) and (max-height:1100px) {.chat{height: 300px;}}
+@media all and (orientation:landscape) and (min-height:1101px)                         {.chat{height: 300px;}}
 
 .li{
     margin-bottom: 10px;
