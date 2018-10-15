@@ -1,0 +1,68 @@
+<div class="card text-center mb-2">
+  <div class="card-body">
+    <p>목표 : 일 100회</p>
+       금일 : 총 40회
+  </div>
+</div>
+
+<div class="card text-center mb-2">
+  <div class="card-body">
+    <p class="mr-3">Pushup 횟수를 클릭하세요.</p>  
+    <p>
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm">10회</button> 
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm">15회</button> 
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm">20회</button> 
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm">25회</button> 
+    </p>  
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm">30회</button> 
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm">35회</button> 
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm">40회</button> 
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm">45회</button> 
+  </div>
+</div>
+
+<div class="card text-center">
+  <div class="card-body">
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action" *ngFor="let subtitle of subtitleListVo;"
+            [class.selected]="subtitle === selectedSubtitle"
+            (dblclick)="onSaveSttlNum(subtitle)">
+            [{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-body table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+            <th>일자</th>
+            <th>시간</th>
+            <th>회수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>2018.10.15</td>
+            <td>11:11:11</td>
+            <td>10</td>
+        </tr>
+        <tr>
+          <td>2018.10.15</td>
+          <td>11:11:11</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>2018.10.15</td>
+          <td>11:11:11</td>
+          <td>10</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

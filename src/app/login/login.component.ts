@@ -45,8 +45,10 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('usrEmail', result.usr.usrEmail);
                 localStorage.setItem('usrPw', result.usr.usrPw);
                 localStorage.setItem('usrNm', result.usr.usrNm);
-
+                console.log('111');  
                 this.router.navigate(['/subtitle-regist']);
+                console.log('222');  
+
             }   
         });
         

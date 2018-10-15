@@ -19,22 +19,22 @@ export class UsrService {
     ,@Inject(DOCUMENT) private document: any) { }
 
   insertUsr (usr: Usr): Observable<any> {
-    return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/insertUsr', usr, httpOptions)
+    return this.http.post<any>('http://'+this.document.location.hostname+':8082/usr/insertUsr', usr, httpOptions)
     ;
   }
   
   selectUsrLogin (usr: Usr): Observable<any> {
-    return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/selectUsrLogin', usr, httpOptions)
+    return this.http.post<any>('http://'+this.document.location.hostname+':8082/usr/selectUsrLogin', usr, httpOptions)
     ;
   }
 
   saveUsr (usr: Usr): Observable<any> {
-    return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/saveUsr', usr, httpOptions)
+    return this.http.post<any>('http://'+this.document.location.hostname+':8082/usr/saveUsr', usr, httpOptions)
     ;
   }
 
   addUsr2 (usr: Usr): Observable<Usr> {
-    return this.http.post<Usr>('http://'+this.document.location.hostname+':8085/usr/saveUsr', usr, httpOptions)
+    return this.http.post<Usr>('http://'+this.document.location.hostname+':8082/usr/saveUsr', usr, httpOptions)
     ;
   }
 
