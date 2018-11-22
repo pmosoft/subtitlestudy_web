@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PushupService } from './pushup/pushup.service';
-import { Pushup } from './pushup/pushup';
+import { SubtitleService } from './subtitle/subtitle.service';
+import { Subtitle } from './subtitle/subtitle';
 
 @Component({
     selector: 'app-layout',
@@ -10,27 +10,27 @@ import { Pushup } from './pushup/pushup';
 })
 export class LayoutComponent implements OnInit {
 
-    pushupInVo: Pushup = new Pushup();
-    usrSttlVoList: Pushup[]
+    subtitleInVo: Subtitle = new Subtitle();
+    usrSttlVoList: Subtitle[]
     usrId = localStorage.getItem('usrId');
 
-    constructor(private pushupService: PushupService
+    constructor(private subtitleService: SubtitleService
         ,private router: Router) {}
 
     ngOnInit() {
-        //this.router.navigate(['/pushup-view/:blank']);
+        //this.router.navigate(['/subtitle-view/:blank']);
 
-        this.pushupInVo.usrId = this.usrId;
-        // this.pushupService.selectUsrSttlMstrList(this.pushupInVo)
-        // .subscribe(result => {
-        //    if(!result.isSuccess) alert(result.errUsrMsg)
-        //   else {
-        //     this.usrSttlVoList = result.usrSttlVoList;
-        //     if(this.usrSttlVoList.length==0) 
-        //          this.router.navigate(['/pushup-regist']);
-        //     else this.router.navigate(['/pushup-view/:blank']);
-        //   } 
-        // });
+        this.subtitleInVo.usrId = this.usrId;
+        this.subtitleService.selectUsrSttlMstrList(this.subtitleInVo)
+        .subscribe(result => {
+           if(!result.isSuccess) alert(result.errUsrMsg)
+          else {
+            this.usrSttlVoList = result.usrSttlVoList;
+            if(this.usrSttlVoList.length==0) 
+                 this.router.navigate(['/subtitle-regist']);
+            else this.router.navigate(['/subtitle-view/:blank']);
+          } 
+        });
 
 
 
