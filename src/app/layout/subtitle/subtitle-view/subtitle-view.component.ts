@@ -40,6 +40,9 @@ export class SubtitleViewComponent implements OnInit {
   onSelectUsrSttlBookmark() {
     this.subtitle.condBookmarkYn = 'Y';
     this.onSelectUsrSttl();
+    document.getElementById("chat1").scrollTop = 10; 
+    document.getElementById("chat2").scrollTop = 10;
+
   }
 
   onSelectUsrSttlBookmarkNext() {
