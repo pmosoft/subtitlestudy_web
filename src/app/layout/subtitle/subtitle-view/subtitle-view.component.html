@@ -1,18 +1,20 @@
-<div class="card">
-  <div class="card-header">
-    <div class="clearfix">
-      <div class="float-left">Subtitle Views</div>
-      <div class="float-right">
-        <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlAll()">All</button>
-        <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmark()">Mark</button>
-        <button type="button" class="btn btn-outline-primary btn-sm" [routerLink]="['/subtitle-list']">
-          <i class="fa fa-tasks fa-fw"></i>
-        </button> 
-      </div>
+ <div class="">
+  <div class="clearfix">
+    <!--     
+    <div class="float-left">
+      <button type="button" class="btn mr-2 btn-sm" >Subtitle Views</button>
+    </div>
+    -->
+    <div class="float-right">
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlAll()">All</button>
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmark()">Mark</button>
+      <button type="button" class="btn btn-outline-primary btn-sm" [routerLink]="['/subtitle-list']">
+        <i class="fa fa-tasks fa-fw"></i>
+      </button> 
     </div>
   </div>
 </div>
-   
+
 <div id="chat1" class="chat2 border">
   <ul class="list-group">
     <li class="list-group-item list-group-item-action" 

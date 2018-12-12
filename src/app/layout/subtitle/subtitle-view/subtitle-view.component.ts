@@ -24,8 +24,8 @@ export class SubtitleViewComponent implements OnInit {
     console.log("window.innerHeight=="+ this.winHeight);
     //document.getElementById("chat1").style.height = this.winHeight/2-(this.winHeight*0.20) + "px";
     //document.getElementById("chat2").style.height = this.winHeight/2-(this.winHeight*0.20) + "px";
-    document.getElementById("chat1").style.height = (this.winHeight-170)/2 + "px"; 
-    document.getElementById("chat2").style.height = (this.winHeight-170)/2 + "px";
+    document.getElementById("chat1").style.height = (this.winHeight-150)/2 + "px"; 
+    document.getElementById("chat2").style.height = (this.winHeight-150)/2 + "px";
     this.usrId = localStorage.getItem('usrId'); 
     this.subtitle.usrId = this.usrId;
     //console.log("this.subtitle.usrId=="+ this.subtitle.usrId);
