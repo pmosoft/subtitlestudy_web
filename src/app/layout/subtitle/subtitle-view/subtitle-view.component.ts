@@ -14,61 +14,51 @@ export class SubtitleViewComponent implements OnInit {
   foreignSubtitle : Subtitle[];
   motherSubtitle : Subtitle[];
   usrId : string;
+  sttlNm : string;
   winHeight : number;
 
   constructor(private subtitleService: SubtitleService
              ,private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.winHeight = window.innerHeight; 
+    this.winHeight = window.innerHeight;
     console.log("window.innerHeight=="+ this.winHeight);
     //document.getElementById("chat1").style.height = this.winHeight/2-(this.winHeight*0.20) + "px";
     //document.getElementById("chat2").style.height = this.winHeight/2-(this.winHeight*0.20) + "px";
-    document.getElementById("chat1").style.height = (this.winHeight-150)/2 + "px"; 
+    document.getElementById("chat1").style.height = (this.winHeight-150)/2 + "px";
     document.getElementById("chat2").style.height = (this.winHeight-150)/2 + "px";
-    this.usrId = localStorage.getItem('usrId'); 
+    this.usrId = localStorage.getItem('usrId');
+    this.sttlNm = this.route.snapshot.paramMap.get('sttlNm');
     this.subtitle.usrId = this.usrId;
+    this.subtitle.sttlNm = this.sttlNm;
     //console.log("this.subtitle.usrId=="+ this.subtitle.usrId);
     this.onSelectUsrSttl();
   }
 
-  onSelectUsrSttlAll() {
-    this.subtitle.condBookmarkYn = 'N';
-    this.onSelectUsrSttl();
-  }
-
-  onSelectUsrSttlBookmark() {
-    this.subtitle.condBookmarkYn = 'Y';
-    this.onSelectUsrSttl();
-    document.getElementById("chat1").scrollTop = 10; 
-    document.getElementById("chat2").scrollTop = 10;
-
-  }
-
-  onSelectUsrSttlBookmarkNext() {
-    this.onSaveSttlNum(this.subtitle);
-    this.onSelectUsrSttl();
-  }
-
-
+  /****************************************************************************
+   * Event
+   ****************************************************************************/
+  /*************
+   * Select
+   *************/
   onSelectUsrSttl() {
-    const sttlNm = this.route.snapshot.paramMap.get('sttlNm');
     //console.log("sttlNm=="+sttlNm);
     //console.log("usrId1=="+localStorage.getItem('usrId'));
     //console.log("usrId2=="+this.usrId);
 
     this.subtitle.usrId = this.usrId;
-    this.subtitle.sttlNm = sttlNm;
+    this.subtitle.sttlNm = this.sttlNm;
     this.subtitle.condSttlCd = "0";
 
     this.subtitleService.selectUsrSttl(this.subtitle)
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
       else {
-        this.foreignSubtitle = result.foreignSubtitle;  
-        this.motherSubtitle = result.motherSubtitle; 
-        //console.log(result.subtitleListVo);  
-      } 
+        this.subtitle.sttlNm = result.sttlNm;
+        this.foreignSubtitle = result.foreignSubtitle;
+        this.motherSubtitle = result.motherSubtitle;
+        //console.log(result.subtitleListVo);
+      }
     });
   }
 
@@ -78,26 +68,78 @@ export class SubtitleViewComponent implements OnInit {
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
       else {
-        this.foreignSubtitle = result.foreignSubtitle;  
-        this.motherSubtitle = result.motherSubtitle; 
-        console.log(result.subtitleListVo);  
-      } 
+        this.foreignSubtitle = result.foreignSubtitle;
+        this.motherSubtitle = result.motherSubtitle;
+        //console.log(result.subtitleListVo);
+      }
     });
+  }
+
+
+  /*************
+   * Bookmark
+   *************/
+  onSelectBookmark() {
+    // // save - foreign
+    // for (var i = 0; i < this.foreignSubtitle.length; i++) {
+    //   if(this.foreignSubtitle[i].chk) {
+    //     this.foreignSubtitle[i].condBookmarkYn = 'Y';
+    //     this.onSaveSttlNum(this.foreignSubtitle[i]);
+    //   }
+    // }
+    //
+    // // save - mother
+    // for (var i = 0; i < this.motherSubtitle.length; i++) {
+    //   if(this.motherSubtitle[i].chk) {
+    //     this.motherSubtitle[i].condBookmarkYn = 'Y';
+    //     this.onSaveSttlNum(this.motherSubtitle[i]);
+    //   }
+    // }
+
+    // select
+    this.subtitle.condBookmarkYn = 'Y';
+    this.onSelectUsrSttl();
+
+    document.getElementById("chat1").scrollTop = 0;
+    document.getElementById("chat2").scrollTop = 0;
+
   }
 
   onSaveSttlNum(subtitle: Subtitle) {
-    console.log("subtitle.sttlNm=="+subtitle.sttlNm);
-    console.log("subtitle.sttlCd=="+subtitle.sttlCd);
-    console.log("subtitle.sttlNum=="+subtitle.sttlNum);
+    //console.log("subtitle.sttlNm=="+subtitle.sttlNm);
+    //console.log("subtitle.sttlCd=="+subtitle.sttlCd);
+    //console.log("subtitle.sttlNum=="+subtitle.sttlNum);
+    if(!subtitle.chk) {
+      this.subtitleService.saveSttlNum(subtitle)
+      .subscribe(result => {
+        if(!result.isSuccess) alert(result.errUsrMsg)
+        else {
+          //this.subtitle.condBookmarkYn = 'Y';
+          //this.onSelectUsrSttl();
 
-    this.subtitleService.saveSttlNum(subtitle)
-    .subscribe(result => {
-      if(!result.isSuccess) alert(result.errUsrMsg)
-      else {
-        console.log("success");  
-      }  
-    });
+          //console.log("success");
+        }
+      });
+    }
   }
+
+  /*************
+   * Review
+   *************/
+  onSaveReview(){}
+  /*************
+   * First
+   *************/
+  onSelectUsrSttlAll() {
+    this.subtitle.condBookmarkYn = 'N';
+    this.onSelectUsrSttl();
+  }
+
+  onSelectUsrSttlBookmarkNext() {
+    this.onSaveSttlNum(this.subtitle);
+    this.onSelectUsrSttl();
+  }
+
 
 
 }
