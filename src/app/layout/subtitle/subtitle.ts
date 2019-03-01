@@ -12,14 +12,14 @@ export class Subtitle {
   regDtm   : string; // 등록일시
   regUsrId : string; // 등록자
   updDtm   : string; // 변경일시
-  updUsrId : string; // 변경자 
+  updUsrId : string; // 변경자
 
   condSttlNum : string = "0";    // 조회조건:자막순번
   condSttlCd  : string = "0";    // 조회조건:자막구분
   condBookmarkYn : string = "Y"; // 조회조건:북마크여부
 
-	foreignQryNum : number = 0; // 외국어 북마크번호
-  motherQryNum  : number = 0; // 모국어 북마크번호
+  fsttlDesc : string; // 외국어자막문장내용
+  msttlDesc : string; // 모국어자막문장내용
 
   chk : boolean = false;
 }

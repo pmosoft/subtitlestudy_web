@@ -15,7 +15,17 @@ export class SubtitleViewComponent implements OnInit {
   motherSubtitle : Subtitle[];
   usrId : string;
   sttlNm : string;
+  preChk : boolean = false;
+
   winHeight : number;
+
+  comboFunc = [
+      {name : 'Bookmark' , value : 'bookmark'  }
+     ,{name : 'Review'   , value : 'review'    }
+     ,{name : 'First'    , value : 'first'     }
+  ];
+  comboIdx : number = 0;
+
 
   constructor(private subtitleService: SubtitleService
              ,private route: ActivatedRoute) { }
@@ -75,7 +85,21 @@ export class SubtitleViewComponent implements OnInit {
     });
   }
 
+  /*************
+   * Execute
+   *************/
+  onChangeCombo(i) {
+    this.comboIdx = i;
+    console.log(this.comboIdx);
+  }
 
+  onExecute() {
+    switch(this.comboIdx) {
+      case 0    : this.onSelectBookmark();
+      case 1    : this.onSaveReview();
+      case 2    : this.onSelectUsrSttlAll();
+    }
+  }
   /*************
    * Bookmark
    *************/
@@ -103,13 +127,16 @@ export class SubtitleViewComponent implements OnInit {
     document.getElementById("chat1").scrollTop = 0;
     document.getElementById("chat2").scrollTop = 0;
 
+    this.preChk = false;
+    this.onPreChk();
+
   }
 
   onSaveSttlNum(subtitle: Subtitle) {
     //console.log("subtitle.sttlNm=="+subtitle.sttlNm);
     //console.log("subtitle.sttlCd=="+subtitle.sttlCd);
     //console.log("subtitle.sttlNum=="+subtitle.sttlNum);
-    if(!subtitle.chk) {
+    if(!subtitle.chk && !this.preChk) {
       this.subtitleService.saveSttlNum(subtitle)
       .subscribe(result => {
         if(!result.isSuccess) alert(result.errUsrMsg)
@@ -118,15 +145,42 @@ export class SubtitleViewComponent implements OnInit {
           //this.onSelectUsrSttl();
 
           //console.log("success");
+
         }
       });
     }
+
   }
 
   /*************
    * Review
    *************/
-  onSaveReview(){}
+  onSaveReview(){
+    if(!this.preChk) {
+      alert("Must Checked check Box in review button and select review subtitles");
+    }
+
+    // save - foreign
+    for (var i = 0; i < this.foreignSubtitle.length; i++) {
+      if(this.foreignSubtitle[i].chk) {
+        this.subtitle.fsttlDesc += this.foreignSubtitle[i].sttlDesc + "\n";
+      }
+    }
+
+    console.log("f="+this.subtitle.fsttlDesc);
+    this.preChk = false;
+    this.onPreChk();
+  }
+
+  onPreChk() {
+    for (var i = 0; i < this.foreignSubtitle.length; i++) {
+      this.foreignSubtitle[i].chk = false;
+    }
+    for (var i = 0; i < this.motherSubtitle.length; i++) {
+      this.foreignSubtitle[i].chk = false;
+    }
+  }
+
   /*************
    * First
    *************/
