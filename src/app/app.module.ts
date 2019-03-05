@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //import { AlertsModule } from 'angular-alert-module';
 
@@ -40,7 +41,8 @@ export const createTranslateLoader = (http: HttpClient) => {
                 deps: [HttpClient]
             }
         }),
-        //AlertsModule.forRoot(),        
+        //AlertsModule.forRoot(),  
+        NgbModule,		
         AppRoutingModule
     ],
     declarations: [AppComponent],

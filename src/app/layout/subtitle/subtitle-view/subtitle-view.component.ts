@@ -15,7 +15,6 @@ export class SubtitleViewComponent implements OnInit {
   motherSubtitle : Subtitle[];
   usrId : string;
   sttlNm : string;
-  preChk : boolean = false;
 
   winHeight : number;
 
@@ -32,7 +31,7 @@ export class SubtitleViewComponent implements OnInit {
 
   ngOnInit() {
     this.winHeight = window.innerHeight;
-    console.log("window.innerHeight=="+ this.winHeight);
+    //console.log("window.innerHeight=="+ this.winHeight);
     //document.getElementById("chat1").style.height = this.winHeight/2-(this.winHeight*0.20) + "px";
     //document.getElementById("chat2").style.height = this.winHeight/2-(this.winHeight*0.20) + "px";
     document.getElementById("chat1").style.height = (this.winHeight-150)/2 + "px";
@@ -64,10 +63,10 @@ export class SubtitleViewComponent implements OnInit {
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
       else {
-        this.subtitle.sttlNm = result.sttlNm;
+        this.subtitle.sttlNm = result.foreignSubtitle[0].sttlNm;
         this.foreignSubtitle = result.foreignSubtitle;
         this.motherSubtitle = result.motherSubtitle;
-        //console.log(result.subtitleListVo);
+        //console.log("result.sttlNm="+result.foreignSubtitle[0].sttlNm);
       }
     });
   }
@@ -90,15 +89,21 @@ export class SubtitleViewComponent implements OnInit {
    *************/
   onChangeCombo(i) {
     this.comboIdx = i;
-    console.log(this.comboIdx);
+    //console.log(this.comboIdx);
+    switch(this.comboIdx) {
+      case 0    : this.onSelectBookmark();break;
+      case 2    : this.onSelectUsrSttlAll();break;
+    }
+    this.onUnChk();
   }
 
   onExecute() {
     switch(this.comboIdx) {
-      case 0    : this.onSelectBookmark();
-      case 1    : this.onSaveReview();
-      case 2    : this.onSelectUsrSttlAll();
+      case 0    : this.onSelectBookmark();break;
+      case 1    : this.onSaveReview();break;
+      case 2    : this.onSelectUsrSttlAll();break;
     }
+    this.onUnChk();
   }
   /*************
    * Bookmark
@@ -127,8 +132,7 @@ export class SubtitleViewComponent implements OnInit {
     document.getElementById("chat1").scrollTop = 0;
     document.getElementById("chat2").scrollTop = 0;
 
-    this.preChk = false;
-    this.onPreChk();
+    this.onUnChk();
 
   }
 
@@ -136,7 +140,7 @@ export class SubtitleViewComponent implements OnInit {
     //console.log("subtitle.sttlNm=="+subtitle.sttlNm);
     //console.log("subtitle.sttlCd=="+subtitle.sttlCd);
     //console.log("subtitle.sttlNum=="+subtitle.sttlNum);
-    if(!subtitle.chk && !this.preChk) {
+    if(!subtitle.chk && this.comboIdx!= 1) {
       this.subtitleService.saveSttlNum(subtitle)
       .subscribe(result => {
         if(!result.isSuccess) alert(result.errUsrMsg)
@@ -156,28 +160,48 @@ export class SubtitleViewComponent implements OnInit {
    * Review
    *************/
   onSaveReview(){
-    if(!this.preChk) {
-      alert("Must Checked check Box in review button and select review subtitles");
-    }
+    //alert("Must Checked check Box in review button and select review subtitles");
 
-    // save - foreign
+    this.subtitle.fsttlDesc = "";
+    this.subtitle.msttlDesc = "";
+
+    // foreign
     for (var i = 0; i < this.foreignSubtitle.length; i++) {
       if(this.foreignSubtitle[i].chk) {
         this.subtitle.fsttlDesc += this.foreignSubtitle[i].sttlDesc + "\n";
+        //console.log("f["+i+"]="+this.subtitle.fsttlDesc);
       }
     }
 
-    console.log("f="+this.subtitle.fsttlDesc);
-    this.preChk = false;
-    this.onPreChk();
+    // mother
+    for (var i = 0; i < this.motherSubtitle.length; i++) {
+      if(this.motherSubtitle[i].chk) {
+        this.subtitle.msttlDesc += this.motherSubtitle[i].sttlDesc + "\n";
+        //console.log("f="+this.subtitle.msttlDesc);
+      }
+    }
+    //console.log("f="+this.subtitle.fsttlDesc);
+    //console.log("m="+this.subtitle.msttlDesc);
+
+    if(this.foreignSubtitle.length > 0) {
+      //console.log("saveReviewSttl");
+      this.subtitleService.saveReviewSttl(this.subtitle)
+      .subscribe(result => {
+        if(!result.isSuccess) alert(result.errUsrMsg)
+        else {
+        }
+      });
+    }
+
+    this.onUnChk();
   }
 
-  onPreChk() {
+  onUnChk() {
     for (var i = 0; i < this.foreignSubtitle.length; i++) {
       this.foreignSubtitle[i].chk = false;
     }
     for (var i = 0; i < this.motherSubtitle.length; i++) {
-      this.foreignSubtitle[i].chk = false;
+      this.motherSubtitle[i].chk = false;
     }
   }
 

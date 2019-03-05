@@ -2,7 +2,7 @@
     <div class="list-group">
         <a routerLink="/subtitle-view/:blank" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Subtitle View1' | translate }}
-        </a> 
+        </a>
         <a routerLink="/subtitle-view-mother/:blank" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Subtitle View2' | translate }}
         </a>
@@ -12,14 +12,20 @@
         <a routerLink="/subtitle-regist" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Regist Subtitle' | translate }}
         </a>
+        <a routerLink="/subtitle-review" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Review' | translate }}
+        </a>
         <a routerLink="/subtitle-site" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Subtitle Site' | translate }}
         </a>
+        <a routerLink="/subtitle-site" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Opinion' | translate }}
+        </a>
+        <a routerLink="/about" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'About' | translate }}
+        </a>
         <!-- only admin menu -->
         <div *ngIf="usrNm == 'lifedomy'">
-            <a routerLink="/subtitle-site" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Opinion' | translate }}
-            </a>            
             <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
                 <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
             </a>
@@ -29,7 +35,7 @@
             <a routerLink="/forms" [routerLinkActive]="['router-link-active']" class="list-group-item">
                 <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Forms' | translate }}
             </a>
-        </div> 
+        </div>
 
         <div class="header-fields">
             <div class="nested-menu">

@@ -1,4 +1,5 @@
 export class Subtitle {
+  // 엔티티
   usrId    : string; // 사용자아이디
   usrEmail : string; // 사용자이메일
   sttlNm   : string; // 자막명
@@ -14,12 +15,18 @@ export class Subtitle {
   updDtm   : string; // 변경일시
   updUsrId : string; // 변경자
 
+  // 체크
+  chk : boolean = false;
+
+  // 조건
   condSttlNum : string = "0";    // 조회조건:자막순번
   condSttlCd  : string = "0";    // 조회조건:자막구분
   condBookmarkYn : string = "Y"; // 조회조건:북마크여부
 
-  fsttlDesc : string; // 외국어자막문장내용
-  msttlDesc : string; // 모국어자막문장내용
+  // 리뷰
+  serialNo  : number = 0;
+  fsttlDesc : string = ""; // 외국어자막문장내용
+  msttlDesc : string = ""; // 모국어자막문장내용
+  reviewCnt : number = 0;  // 리뷰횟수
 
-  chk : boolean = false;
 }

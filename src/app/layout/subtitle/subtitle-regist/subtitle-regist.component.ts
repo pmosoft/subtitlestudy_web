@@ -15,7 +15,7 @@ export class SubtitleRegistComponent implements OnInit {
              ,private router: Router) {}
 
   ngOnInit() {
-    console.log('subtitle-regist ngOnInit');  
+    //console.log('subtitle-regist ngOnInit');  
   }
 
   //usrId = 'lifedomy@gmail.com';
@@ -51,7 +51,7 @@ export class SubtitleRegistComponent implements OnInit {
   }
     
   onUpload() {
-    console.log("onUpload");
+    //console.log("onUpload");
 
     const fd = new FormData();
     fd.append('uploadFile', this.foreignFile);
@@ -61,13 +61,13 @@ export class SubtitleRegistComponent implements OnInit {
     this.subtitleService.saveUsrSubtitles(fd).subscribe(result => {
       if(!result.isSuccess) {
         alert(result.errUsrMsg); 
-        console.log("errSysMsg====="+result.errSysMsg);
+        //console.log("errSysMsg====="+result.errSysMsg);
 
       } else {
         //this.foreignSubtitle = result.foreignSubtitle;  
         //this.motherSubtitle = result.motherSubtitle; 
         this.router.navigate(['/subtitle-view/'+result.sttlNm]);
-        //console.log(result.usrMsg);  
+        ////console.log(result.usrMsg);  
       }  
     });  
   }

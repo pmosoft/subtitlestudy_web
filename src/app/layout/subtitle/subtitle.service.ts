@@ -15,7 +15,6 @@ const httpOptions = {
 export class SubtitleService {
 
   subtitle : Subtitle;
-  private heroesUrl = '/subtitle/test3';  // URL to web api
 
   constructor(private http: HttpClient
              ,@Inject(DOCUMENT) private document: any) { }
@@ -26,11 +25,10 @@ export class SubtitleService {
   saveSttlNum(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveSttlNum', subtitle, httpOptions);
   }
-
-  /** GET heroes from the server */
-  getHeroes (): Observable<Subtitle> {
-    return this.http.get<Subtitle>('http://'+this.document.location.hostname+':8085/subtitle/test5');
+  saveReviewSttl(subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveReviewSttl', subtitle, httpOptions);
   }
+
 
   selectUsrSttlMstrList(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttlMstrList', subtitle, httpOptions);
@@ -39,15 +37,18 @@ export class SubtitleService {
   selectUsrSttl(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttl', subtitle, httpOptions);
   }
- 
+
   selectRecentlySubtitle(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrRecentlySttl', subtitle, httpOptions)
     ;
   }
- 
+
   selectUsrSttlDtlList(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttlDtlList', subtitle, httpOptions)
     ;
   }
- 
+
+  selectReviewSttlList(subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectReviewSttlList', subtitle, httpOptions);
+  }
 }

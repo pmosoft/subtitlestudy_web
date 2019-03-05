@@ -9,11 +9,7 @@
       <select class="btn btn-outline-primary btn-sm mr-2" (change)="onChangeCombo($event.target.selectedIndex)"  >
         <option *ngFor="let func of comboFunc" [value]="func.value" >{{func.name}}</option>
       </select>
-      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onExecute()"><i class="fa fa-bookmark fa-fw"></i>Execute</button>
-      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectBookmark()"><i class="fa fa-bookmark fa-fw"></i>Mark</button>
-      <input class="mr-1" type="checkbox" [(ngModel)]="preChk" (click)="onPreChk()">
-      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSaveReview()">Review</button>
-      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlAll()"><i class="fa fa-align-justify fa-fw"></i>First</button>
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onExecute()"><i class="fa fa-align-justify fa-fw mr-1"></i>Execute</button>
     </div>
   </div>
 </div>

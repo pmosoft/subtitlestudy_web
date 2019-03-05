@@ -21,7 +21,7 @@ export class SubtitleViewMotherComponent implements OnInit {
   condSttlCd = [
     {id: 1, name: "Foreien"},
     {id: 2, name: "Mother"},
-    {id: 0, name: "All"}    
+    {id: 0, name: "All"}
   ];
   selectedValue : string = "1";
 
@@ -29,9 +29,9 @@ export class SubtitleViewMotherComponent implements OnInit {
              ,private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.usrId = localStorage.getItem('usrId'); 
+    this.usrId = localStorage.getItem('usrId');
     this.subtitle.usrId = this.usrId;
-    console.log("this.subtitle.usrId=="+ this.subtitle.usrId);
+    //console.log("this.subtitle.usrId=="+ this.subtitle.usrId);
     this.onSelectUsrSttl();
   }
 
@@ -40,20 +40,20 @@ export class SubtitleViewMotherComponent implements OnInit {
   }
 
   onChange(deviceValue) {
-    console.log(deviceValue);
+    //console.log(deviceValue);
     this.selectedValue = deviceValue;
-    console.log(this.selectedValue);
+    //console.log(this.selectedValue);
     this.onSelectUsrSttl();
-  } 
+  }
 
   onSelectUsrSttl() {
-    
-    console.log("selectedValue=="+this.selectedValue);
+
+    //console.log("selectedValue=="+this.selectedValue);
 
     const sttlNm = this.route.snapshot.paramMap.get('sttlNm');
-    console.log("sttlNm=="+sttlNm);
-    console.log("usrId1=="+localStorage.getItem('usrId'));
-    console.log("usrId2=="+this.usrId);
+    //console.log("sttlNm=="+sttlNm);
+    //console.log("usrId1=="+localStorage.getItem('usrId'));
+    //console.log("usrId2=="+this.usrId);
 
     this.subtitle.usrId = this.usrId;
     this.subtitle.sttlNm = sttlNm;
@@ -65,30 +65,30 @@ export class SubtitleViewMotherComponent implements OnInit {
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
       else {
-        this.foreignSubtitle = result.foreignSubtitle;  
-        this.motherSubtitle = result.motherSubtitle; 
+        this.foreignSubtitle = result.foreignSubtitle;
+        this.motherSubtitle = result.motherSubtitle;
         this.subtitleListVo = result.subtitleListVo;
-        //console.log(result.subtitleListVo);  
-      } 
+        ////console.log(result.subtitleListVo);
+      }
     });
   }
 
 
   onSelectRecentlySubtitle() {
     this.subtitleInVo.usrId = this.usrId;
-    this.subtitleInVo.sttlCd = "2";    
+    this.subtitleInVo.sttlCd = "2";
     this.subtitleService.selectRecentlySubtitle(this.subtitleInVo)
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
       else {
-        this.foreignSubtitle = result.foreignSubtitle;  
-        this.motherSubtitle = result.motherSubtitle; 
+        this.foreignSubtitle = result.foreignSubtitle;
+        this.motherSubtitle = result.motherSubtitle;
         this.subtitleListVo = result.subtitleListVo;
-        console.log(result.subtitleListVo);  
-      } 
+        ////console.log(result.subtitleListVo);
+      }
     });
   }
- 
+
 
   onSelectUsrSttlAll() {
     this.subtitle.condBookmarkYn = 'N';
@@ -102,17 +102,17 @@ export class SubtitleViewMotherComponent implements OnInit {
 
 
   onSaveSttlNum(subtitle: Subtitle) {
-    console.log("subtitle.sttlNm=="+subtitle.sttlNm);
-    console.log("subtitle.sttlCd=="+subtitle.sttlCd);
-    console.log("subtitle.sttlNum=="+subtitle.sttlNum);
+    //console.log("subtitle.sttlNm=="+subtitle.sttlNm);
+    //console.log("subtitle.sttlCd=="+subtitle.sttlCd);
+    //console.log("subtitle.sttlNum=="+subtitle.sttlNum);
 
 
     this.subtitleService.saveSttlNum(subtitle)
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
       else {
-        console.log("success");  
-      }  
+        //console.log("success");
+      }
     });
   }
 

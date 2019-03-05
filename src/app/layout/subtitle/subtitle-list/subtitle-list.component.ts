@@ -31,9 +31,9 @@ export class SubtitleListComponent implements OnInit {
   usrId = localStorage.getItem('usrId');
 
   onChange(deviceValue) {
-    console.log(deviceValue);
+    //console.log(deviceValue);
     this.selectedValue = deviceValue;
-    console.log(this.selectedValue);
+    //console.log(this.selectedValue);
   }
 
   onSelectUsrSttlMstrList() {
@@ -43,14 +43,14 @@ export class SubtitleListComponent implements OnInit {
        if(!result.isSuccess) alert(result.errUsrMsg)
       else {
         this.usrSttlVoList = result.usrSttlVoList;
-        console.log(result.usrSttlVoList);
+        //console.log(result.usrSttlVoList);
       }
     });
   }
 
   onClick(subtitle: Subtitle) {
 
-    console.log("subtitle.sttlNm=="+subtitle.sttlNm);
+    //console.log("subtitle.sttlNm=="+subtitle.sttlNm);
     if(this.selectedValue=="1") {
       this.router.navigate(['/subtitle-view/'+subtitle.sttlNm]);
     } else {
