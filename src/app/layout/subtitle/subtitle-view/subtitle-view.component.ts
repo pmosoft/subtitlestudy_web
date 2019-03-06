@@ -140,7 +140,7 @@ export class SubtitleViewComponent implements OnInit {
     //console.log("subtitle.sttlNm=="+subtitle.sttlNm);
     //console.log("subtitle.sttlCd=="+subtitle.sttlCd);
     //console.log("subtitle.sttlNum=="+subtitle.sttlNum);
-    if(!subtitle.chk && this.comboIdx!= 1) {
+    if(!subtitle.chk) {
       this.subtitleService.saveSttlNum(subtitle)
       .subscribe(result => {
         if(!result.isSuccess) alert(result.errUsrMsg)
