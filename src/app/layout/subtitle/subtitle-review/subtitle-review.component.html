@@ -2,7 +2,7 @@
 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let reviewSubtitle of reviewSubtitles; let i = index">
   <ngb-panel>
     <ng-template ngbPanelTitle>
-      <div>&#9733; <b>{{reviewSubtitle.fsttlDesc}}</b> &#9733;</div>
+      <div><b>{{reviewSubtitle.fsttlDesc}}</b></div>
     </ng-template>
     <ng-template ngbPanelContent>{{reviewSubtitle.msttlDesc}}
     </ng-template>

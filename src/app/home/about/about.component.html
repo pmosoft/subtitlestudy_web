@@ -1,62 +1,74 @@
-<div class="navbar">
-  <a href="index.jsp" class="active">Purpose</a>
-  <a href="system.jsp"  >Understanding the System</a>
-  <a href="samples.jsp">Samples</a>
-
-  <a href="javascript:alert('open after released');">API</a>
-  <a href="javascript:alert('open after released');">Component Finder</a>
-  <a href="javascript:alert('open after released');">Editor</a>
-</div>
 <div class="header">
   <h1>Subtitle Study</h1><br>
   <h4>Foreign Language Subtitle is best matirial for studying</h4>
   <h2 style="color:yellow" id="dday"></h2>
+  <button type="button" class="btn btn-sm mt-3" [routerLink]="['/subtitle-view']" >Getting Start</button>
 </div>
+
 
 <div class="row">
   <div class="main">
-    <h2>Anywhere Anytime</h2>
-    <h5></h5>
-    <div class="fakeimg" style="height:200px;background-repeat: no-repeat;background-size:contain">
-      <p> </p>
-      <p> </p>
+    <div>
+      <h2>Anywhere Anytime</h2>
+      <!--
+           출퇴근시 버스와 지하철에서, 사무실에서도 쉬는 시간에, 쇼파나 침대에서도, 기달리는 모든 시간에
+      -->
+      <h5>Commuting by Bus and Subway. Break time in office. laying at Sofa or Bed confortably. Every waiting time.</h5>
+      <div class="row mt-4" >
+          <div class="col-xl-4 col-lg-8 fakeimg mb-2" style="height:200px;background-repeat: no-repeat;background-size:contain">
+            <img src="assets/images/commute.png" width="160px" class="user-avatar ml-1 mr-3" />Commuting by Bus and Subway
+          </div>
+          <div class="col-xl-4 col-lg-8 fakeimg mb-2" style="height:200px;background-repeat: no-repeat;background-size:contain">
+            <img src="assets/images/breaktime.png" width="160px" class="user-avatar ml-1 mr-3" />
+            <span>Break time in office</span>
+          </div>
+          <div class="col-xl-4 col-lg-8 fakeimg mb-2" style="height:200px;background-repeat: no-repeat;background-size:contain">
+            <img src="assets/images/wait-line.jpg" width="160px" class="user-avatar ml-1 mr-3" />Every waiting time.
+          </div>
+      </div>
     </div>
-    <!--
-    -->
+    <br>
+
+    <div>
+      <h2>Your newly faverite moives</h2>
+      <!--
+            최신 당신이 좋아하는 장르의 영화나 드라마 자막으로 학습세요.
+      -->
+      <h5>Learning English is not study but a part of entertainment activities.</h5>
+      <div class="row mt-4" >
+          <div class="col-xl-4 col-lg-8 fakeimg mb-2" style="height:200px;background-repeat: no-repeat;background-size:contain">
+            <img src="assets/images/avengers.png" width="160px" class="user-avatar ml-1 mr-3" />Netfix dramas,movies
+          </div>
+      </div>
+    </div>
 
     <br>
-    <h2>Your newly faverite moives</h2>
-    <!--
-    -->
-    <h5>Many developers find it difficult to create web diagrams. Can not we make this easily? Especially HMI, Start Factory.</h5>
-    <div class="fakeimg" style="height:200px;"><i class="fas fa-10x fa-users" ></i></div>
-    <!--
-    -->
-    <p>The goal is to make a diagram editor so that anyone can easily create a Smart Factory Visualization.</p>
-
+    <div>
+      <h2>From bookmarked location</h2>
+      <!--
+           체크박스를 클릭하기만 하면 북마크 됩니다. 웹브라우져를 오픈하면 북마크된 위치에서 학습할수 있습니다.
+      -->
+      <h5>Yon can bookmark only clicking checkbox. Whenever start this app at your browser, it appear a place bookmarked.</h5>
+      <div class="row mt-4" >
+          <div class="col-xl-4 col-lg-8 fakeimg mb-2" style="height:200px;background-repeat: no-repeat;background-size:contain">
+            <img src="assets/images/bookmark.png" width="160px" class="user-avatar ml-1 mr-3" />Only click checkbox.
+          </div>
+      </div>
+    </div>
     <br>
-    <h2>From bookmarked location </h2>
-    <!--
-    -->
-    <h5>Make diagram by coding? Arn't you difficult?</h5>
-    <div class="fakeimg" style="height:200px;"><i class="fas fa-10x fa-edit"></i></div>
-    <!--
-    -->
-    <p>Your can make features in Editor (similar to Powerpoint eidtor). include position, rotate, skew, fill, stroke, path move, ajax params etc.</p>
 
-    <br>
-    <h2>Save reviewing subtitles</h2>
-    <!--
-    -->
-    <h5>If the Diagram is modified, it will be difficult to do the deployment again. Would it be easy to be reflected right away?</h5>
-    <div class="fakeimg" style="height:200px;"><i class="fas fa-10x fa-fighter-jet"></i></div>
-    <!--
-    -->
-    <p>It can be used anywhere on the web browser and loaded with simple code. It is located on the same web service that is provided and is ready to use without any deployment work.</p>
+    <div>
+      <h2>Save reviewing subtitles</h2>
+      <!--
+           학습에 있어서 복습은 필수요소입니다. 드라마나 영화 자막으로 학습중에 복습하고자 하는 문장을 저장하고 위해서 할것은 단지 체크박스를 클릭하기만 됩니다.
+      -->
+      <h5>Review is essential for all study. You can have your review matirial. Only click checkbox in line.</h5>
+      <div class="row mt-4" >
+          <div class="col-xl-4 col-lg-8 fakeimg mb-2" style="height:200px;background-repeat: no-repeat;background-size:contain">
+            <img src="assets/images/review.jpg" width="160px" class="user-avatar ml-1 mr-3" />your review-collections
+          </div>
+      </div>
+    </div>
 
- </div>
-
-<div class="footer">
-<h3 style="color:white"><img src="" height="20"> Start Easy</h3>
-<h4 style="color:white">Gyung-gi Paju Korea.</h4>
 </div>
+
