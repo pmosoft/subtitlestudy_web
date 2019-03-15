@@ -26,7 +26,7 @@ export class SubtitleListComponent implements OnInit {
   }
 
   subtitleInVo: Subtitle = new Subtitle();
-  usrSttlVoList: Subtitle[]
+  subtitleList: Subtitle[]
 
   usrId = localStorage.getItem('usrId');
 
@@ -42,8 +42,8 @@ export class SubtitleListComponent implements OnInit {
     .subscribe(result => {
        if(!result.isSuccess) alert(result.errUsrMsg)
       else {
-        this.usrSttlVoList = result.usrSttlVoList;
-        //console.log(result.usrSttlVoList);
+        this.subtitleList = result.subtitleList;
+        //console.log(result.subtitleList);
       }
     });
   }

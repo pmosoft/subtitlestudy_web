@@ -13,10 +13,10 @@
   </div> 
 
   <ul class="list-group">
-    <li class="list-group-item list-group-item-action" *ngFor="let usrSttlVo of usrSttlVoList"
-      [class.selected]="usrSttlVo === selectedUsrSttlVo"
-      (click)="onClick(usrSttlVo)">
-      {{usrSttlVo.sttlNm}}
+    <li class="list-group-item list-group-item-action" *ngFor="let subtitle of subtitleList"
+      [class.selected]="subtitle === selectedSubtitle"
+      (click)="onClick(subtitle)">
+      {{subtitle.sttlNm}}
     </li>
   </ul>
 <!-- </div> -->

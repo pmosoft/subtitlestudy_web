@@ -11,7 +11,7 @@ import { Subtitle } from './subtitle/subtitle';
 export class LayoutComponent implements OnInit {
 
     subtitleInVo: Subtitle = new Subtitle();
-    usrSttlVoList: Subtitle[]
+    subtitleList: Subtitle[]
     usrId = localStorage.getItem('usrId');
 
     constructor(private subtitleService: SubtitleService
@@ -25,8 +25,8 @@ export class LayoutComponent implements OnInit {
         .subscribe(result => {
            if(!result.isSuccess) alert(result.errUsrMsg)
           else {
-            this.usrSttlVoList = result.usrSttlVoList;
-            if(this.usrSttlVoList.length==0) 
+            this.subtitleList = result.subtitleList;
+            if(this.subtitleList.length==0) 
                  this.router.navigate(['/subtitle-regist']);
             else this.router.navigate(['/subtitle-view/:blank']);
           } 
