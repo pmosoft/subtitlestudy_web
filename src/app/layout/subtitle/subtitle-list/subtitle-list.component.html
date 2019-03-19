@@ -4,13 +4,13 @@
       <div class="clearfix">
         <div class="float-left">My Subtitles</div>
         <div class="float-right">
-          <select (change)="onChange($event.target.value)" class="btn btn-outline-primary btn-sm mr-2"> 
+          <select (change)="onChange($event.target.value)" class="btn btn-outline-primary btn-sm mr-2">
               <option *ngFor="let view of condViewCd" [value]="view.id" >{{view.name}}</option>
           </select>
         </div>
       </div>
-    </div>    
-  </div> 
+    </div>
+  </div>
 
   <ul class="list-group">
     <li class="list-group-item list-group-item-action" *ngFor="let subtitle of subtitleList"
