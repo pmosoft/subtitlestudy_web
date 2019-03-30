@@ -11,24 +11,18 @@ import { UsrService } from '../layout/usr/usr.service';
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-    usr : Usr = {
-        usrId     : localStorage.getItem('usrId'),
-        usrEmail  : localStorage.getItem('usrEmail'),
-        usrPw     : localStorage.getItem('usrPw'),
-        usrPw2    : localStorage.getItem('usrPw'),
-        usrNm     : localStorage.getItem('usrNm'),
-        usrAge    : '',
-        useYn     : '',
-        regUsrId : '',
-        updUsrId : ''
-         };
-
+    usr : Usr = new Usr();
     constructor(public router: Router
                ,private usrService: UsrService) {}
 
     ngOnInit() {
+        this.usr.usrId    = localStorage.getItem('usrId');
+        this.usr.usrEmail = localStorage.getItem('usrEmail');
+        this.usr.usrPw    = localStorage.getItem('usrPw');
+        this.usr.usrPw2   = localStorage.getItem('usrPw');
+        this.usr.usrNm    = localStorage.getItem('usrNm');
     }
- 
+  
     onLoggedin() {
         // this.usrComponent.selectUsrLogin(usrEmail, usrPw);
         this.usrService.selectUsrLogin(this.usr).subscribe(result => {

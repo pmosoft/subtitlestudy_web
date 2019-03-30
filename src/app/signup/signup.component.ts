@@ -13,17 +13,7 @@ import { UsrService } from '../layout/usr/usr.service';
     animations: [routerTransition()]
 })
 export class SignupComponent implements OnInit {
-    usr : Usr = {
-        usrId     : '',
-        usrEmail  : 'lifedomy@gmail.com',
-        usrPw     : '12345678',
-        usrPw2    : '12345678',
-        usrNm     : '',
-        usrAge    : '',
-        useYn     : '',
-        regUsrId : '',
-        updUsrId : ''
-         };
+    usr : Usr = new Usr();
     
     constructor(private usrService: UsrService) {
     }

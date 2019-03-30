@@ -6,6 +6,11 @@ export class Usr {
   usrNm     : string;
   usrAge    : string;
   useYn     : string;
-  regUsrId : string;
-  updUsrId : string;
+  regUsrId  : string;
+  updUsrId  : string;
+
+  // 엔티티
+  flangCd   : string; // 외국어코드
+  mlangCd   : string; // 모국어코드
+ 
 }

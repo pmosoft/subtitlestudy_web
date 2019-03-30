@@ -23,6 +23,11 @@ export class UsrService {
     ;
   }
   
+  selectUsr (usr: Usr): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/selectUsr', usr, httpOptions)
+    ;
+  }
+  
   selectUsrLogin (usr: Usr): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/selectUsrLogin', usr, httpOptions)
     ;
@@ -32,6 +37,12 @@ export class UsrService {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/saveUsr', usr, httpOptions)
     ;
   }
+
+  saveUsrLang (usr: Usr): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/saveUsrLang', usr, httpOptions)
+    ;
+  }
+
 
   addUsr2 (usr: Usr): Observable<Usr> {
     return this.http.post<Usr>('http://'+this.document.location.hostname+':8085/usr/saveUsr', usr, httpOptions)

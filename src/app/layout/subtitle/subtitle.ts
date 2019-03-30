@@ -15,6 +15,7 @@ export class Subtitle {
   updDtm   : string; // 변경일시
   updUsrId : string; // 변경자
 
+
   // 체크
   chk : boolean = false;
 
@@ -28,5 +29,9 @@ export class Subtitle {
   fsttlDesc : string = ""; // 외국어자막문장내용
   msttlDesc : string = ""; // 모국어자막문장내용
   reviewCnt : number = 0;  // 리뷰횟수
+
+  // 유저언어
+  flandCd : string = ""; // 외국어언어코드
+  mlandCd : string = ""; // 모국어언어코드
 
 }

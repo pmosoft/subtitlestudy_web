@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SubtitleService } from '../subtitle.service';
+import { UsrService } from '../../usr/usr.service';
+import { Usr } from '../../usr/usr';
 import { Subtitle } from '../subtitle';
 import { Router } from '@angular/router';
 
@@ -10,9 +12,21 @@ import { Router } from '@angular/router';
 })
 export class SubtitleRegistComponent implements OnInit {
 
-
-	  selCountry = [
+	  selFLanguage = [
 	      {name: "English"           , value: "en"},
+	      {name: "Chinese"           , value: "zh"},
+	      {name: "Japanese"          , value: "ja"},
+	      {name: "French"            , value: "fr"},
+	      {name: "German"            , value: "de"},
+	      {name: "Portuguese"        , value: "pt"},
+	      {name: "Russian"           , value: "ru"},
+	      {name: "Spanish"           , value: "es"},
+	      {name: "Korean"            , value: "ko"}
+	    ];
+
+
+	  selMLanguage = [
+	      {name: "Default"           , value: ""},
 	      {name: "Chinese"           , value: "zh"},
 	      {name: "Japanese"          , value: "ja"},
 	      {name: "Korean"            , value: "ko"},
@@ -41,7 +55,7 @@ export class SubtitleRegistComponent implements OnInit {
 	      {name: "Catalan"           , value: "ca"},
 	      {name: "Chamorro"          , value: "ch"},
 	      {name: "Chechen"           , value: "ce"},
-	      {name: "Church Slavic"     , value: "cu"},
+	      {name: "Church"            , value: "cu"},
 	      {name: "Chuvash"           , value: "cv"},
 	      {name: "Cornish"           , value: "kw"},
 	      {name: "Corsican"          , value: "co"},
@@ -51,6 +65,7 @@ export class SubtitleRegistComponent implements OnInit {
 	      {name: "Divehi"            , value: "dv"},
 	      {name: "Dutch"             , value: "nl"},
 	      {name: "Dzongkha"          , value: "dz"},
+	      {name: "English"           , value: "en"},
 	      {name: "Esperanto"         , value: "eo"},
 	      {name: "Estonian"          , value: "et"},
 	      {name: "Faroese"           , value: "fo"},
@@ -112,14 +127,14 @@ export class SubtitleRegistComponent implements OnInit {
 	      {name: "Mongolian"         , value: "mn"},
 	      {name: "Nauru"             , value: "na"},
 	      {name: "Navaho"            , value: "nv"},
-	      {name: "Ndebele North"     , value: "nd"},
-	      {name: "Ndebele South"     , value: "nr"},
+	      {name: "Ndebele_N"         , value: "nd"},
+	      {name: "Ndebele_S"         , value: "nr"},
 	      {name: "Ndonga"            , value: "ng"},
 	      {name: "Nepali"            , value: "ne"},
 	      {name: "Sami"              , value: "se"},
 	      {name: "Norwegian"         , value: "no"},
-	      {name: "Norwegian Bokmal"  , value: "nb"},
-	      {name: "Norwegian Nynorsk" , value: "nn"},
+	      {name: "Bokmal"            , value: "nb"},
+	      {name: "Nynorsk"           , value: "nn"},
 	      {name: "Nyanja"            , value: "ny"},
 	      {name: "Occitan"           , value: "oc"},
 	      {name: "Oriya"             , value: "or"},
@@ -132,7 +147,7 @@ export class SubtitleRegistComponent implements OnInit {
 	      {name: "Portuguese"        , value: "pt"},
 	      {name: "Pushto"            , value: "ps"},
 	      {name: "Quechua"           , value: "qu"},
-	      {name: "Raeto-Romance"     , value: "rm"},
+	      {name: "Raeto"             , value: "rm"},
 	      {name: "Romanian"          , value: "ro"},
 	      {name: "Rundi"             , value: "rn"},
 	      {name: "Russian"           , value: "ru"},
@@ -187,23 +202,57 @@ export class SubtitleRegistComponent implements OnInit {
 	    ];
 
 
+	usr : Usr = new Usr();
+	//usrId = 'lifedomy@gmail.com';
+
+	flangIdx = 0;
+	mlangIdx = 0;
+
+	foreignFile = null;
+	foreignFileNm = "Choose Srt or Smi File";
+	foreignSubtitle = "";
+	motherFile = null;
+	motherFileNm = "Choose Srt or Smi File";
+	motherSubtitle = "";
+		
   constructor(private subtitleService: SubtitleService
+             ,private usrService: UsrService
              ,private router: Router) {}
 
   ngOnInit() {
-    //console.log('subtitle-regist ngOnInit');
+		console.log('subtitle-regist ngOnInit : '+ localStorage.getItem('usrId'));
+
+		this.usr.usrId = localStorage.getItem('usrId');
+
+		this.usrService.selectUsr(this.usr).subscribe(result => {
+			if(!result.isSuccess) {
+				alert(result.errUsrMsg);
+			} else {
+				this.usr = result.usr;
+				this.flangIdx = this.selFLanguage.findIndex(lang => lang.value === this.usr.flangCd)
+				this.mlangIdx = this.selMLanguage.findIndex(lang => lang.value === this.usr.mlangCd)
+			}   
+	  });		
+
+	}
+	
+  onChangeFlang(i) {
+		this.usr.flangCd = this.selFLanguage[i].value;
+		
+		this.usrService.saveUsrLang(this.usr).subscribe(result => {
+			if(!result.isSuccess) alert(result.errUsrMsg)
+			else alert(result.usrMsg);  
+		});
   }
 
-  //usrId = 'lifedomy@gmail.com';
-  usrId = localStorage.getItem('usrId');
-
-  foreignFile = null;
-  foreignFileNm = "Choose Srt or Smi File";
-  foreignSubtitle = "";
-  motherFile = null;
-  motherFileNm = "Choose Srt or Smi File";
-  motherSubtitle = "";
-
+  onChangeMlang(i) {
+		this.usr.mlangCd = this.selMLanguage[i].value;
+		
+		this.usrService.saveUsrLang(this.usr).subscribe(result => {
+			if(!result.isSuccess) alert(result.errUsrMsg)
+			else alert(result.usrMsg);  
+		});
+  }
 
   onForeignFileSelected(event) {
     this.foreignFile = <File> event.target.files[0];
@@ -232,7 +281,8 @@ export class SubtitleRegistComponent implements OnInit {
     const fd = new FormData();
     fd.append('uploadFile', this.foreignFile);
     fd.append('uploadFile2', this.motherFile);
-    fd.append('usrEmail', this.usrId);
+		fd.append('usrId', this.usr.usrId);
+		
     //study english using sutitles (foreign and self)
     this.subtitleService.saveUsrSubtitles(fd).subscribe(result => {
       if(!result.isSuccess) {
