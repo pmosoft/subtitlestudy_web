@@ -15,22 +15,28 @@ export class SubtitleReviewComponent implements OnInit {
 
   isCollapsed = false;
 
+  winHeight : number;
+
+  one = "①";
+  two = "②";
+  reviewCnt = "";
+
   constructor(private subtitleService: SubtitleService
              ,private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.winHeight = window.innerHeight;
+    document.getElementById("chat1").style.height = (this.winHeight-150) + "px";
+
     this.subtitle.usrId = localStorage.getItem('usrId');
     this.onSelectReviewSttlList();
   }
 
-  /****************************************************************************
-   * Event
-   ****************************************************************************/
-  /*************
-   * Select
-   *************/
-  onSelectReviewSttlList() {
 
+  /****************************************************************************
+   * Select
+   ****************************************************************************/
+  onSelectReviewSttlList() {
     this.subtitleService.selectReviewSttlList(this.subtitle)
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
@@ -41,5 +47,43 @@ export class SubtitleReviewComponent implements OnInit {
     });
   }
 
+  /****************************************************************************
+   * Done
+   ****************************************************************************/
+  onClickDone() {
+    this.onUpdateReviewCnt();
+    this.onUnChk();
+  }
+
+  onUpdateReviewCnt(){
+
+    for (var i = 0; i < this.reviewSubtitles.length; i++) {
+
+      if(this.reviewSubtitles[i].chk) {
+        this.subtitleService.updateReviewCnt(this.reviewSubtitles[i])
+        .subscribe(result => {
+          if(!result.isSuccess) alert(result.errUsrMsg)
+          else {
+            if(i==this.reviewSubtitles.length) this.onSelectReviewSttlList()
+          }
+        });
+      }
+    }
+    
+    //this.onUnChk();
+  }
+
+  onUnChk() {
+    for (var i = 0; i < this.reviewSubtitles.length; i++) {
+      this.reviewSubtitles[i].chk = false;
+    }
+  }
+
+  /****************************************************************************
+   * Next
+   ****************************************************************************/
+  onClickNext(){
+	  this.onSelectReviewSttlList();
+  }
 
 }

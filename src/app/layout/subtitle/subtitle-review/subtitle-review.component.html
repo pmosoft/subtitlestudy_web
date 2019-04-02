@@ -1,11 +1,30 @@
+<div class="">
+  <div class="clearfix">
+    <div class="float-right">
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onClickDone()"><i class="fa fa-align-justify fa-fw mr-1"></i>Done</button>
+    </div>
+  </div>
+</div>
 
+<div id="chat1" class="chat2 border">
 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let reviewSubtitle of reviewSubtitles; let i = index">
   <ngb-panel>
     <ng-template ngbPanelTitle>
-      <div><b>{{reviewSubtitle.fsttlDesc}}</b></div>
+      <div class="text-left">
+        <input class="mr-1" type="checkbox" [(ngModel)]="reviewSubtitle.chk">
+        <button type="button" class="btn btn-link" >
+          {{reviewSubtitle.fsttlDesc}}
+          <span *ngIf="reviewSubtitle.reviewCnt == 1">{{one}}</span>
+          <span *ngIf="reviewSubtitle.reviewCnt == 2">{{two}}</span>
+        </button>
+      </div>
     </ng-template>
+
     <ng-template ngbPanelContent>{{reviewSubtitle.msttlDesc}}
     </ng-template>
   </ngb-panel>
 </ngb-accordion>
+
+</div>
+
 

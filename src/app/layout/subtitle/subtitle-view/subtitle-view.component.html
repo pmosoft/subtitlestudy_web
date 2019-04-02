@@ -1,4 +1,4 @@
- <div class="">
+<div class="">
   <div class="clearfix">
     <!--
     <div class="float-left">
@@ -9,7 +9,7 @@
       <select class="btn btn-outline-primary btn-sm mr-2" (change)="onChangeCombo($event.target.selectedIndex)"  >
         <option *ngFor="let func of comboFunc" [value]="func.value" >{{func.name}}</option>
       </select>
-      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onExecute()"><i class="fa fa-align-justify fa-fw mr-1"></i>Execute</button>
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onClickExecute()"><i class="fa fa-align-justify fa-fw mr-1"></i>Execute</button>
     </div>
   </div>
 </div>
@@ -17,10 +17,10 @@
 <div id="chat1" class="chat2 border">
   <ul id="chat1" class="list-group">
     <li class="list-group-item list-group-item-action" *ngFor="let subtitle of foreignSubtitle" [class.selected]="subtitle === selectedSubtitle">
-        <input class="mr-1" type="checkbox" [(ngModel)]="subtitle.chk" (click)="onSaveSttlNum(subtitle)">[{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+        <input class="mr-1" type="checkbox" [(ngModel)]="subtitle.chk" (click)="onCheckSaveSttlNum(subtitle)">[{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
         <div class="text-center" *ngIf="subtitle.sttlNum == subtitle.foreignQryNum">
           <div class="mb-3"></div>
-          <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmarkNext()">Bookmark-Next</button>
+          <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onClickNext()">Bookmark-Next</button>
         </div>
     </li>
   </ul>
@@ -29,10 +29,10 @@
 <div id="chat2" class="chat2 border">
     <ul id="chat2" class="list-group">
       <li class="mr-1" class="list-group-item list-group-item-action" *ngFor="let subtitle of motherSubtitle;" [class.selected]="subtitle === selectedSubtitle">
-      <input class="mr-1" type="checkbox" [(ngModel)]="subtitle.chk" (click)="onSaveSttlNum(subtitle)">[{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
+      <input class="mr-1" type="checkbox" [(ngModel)]="subtitle.chk" (click)="onCheckSaveSttlNum(subtitle)">[{{subtitle.sttlNum}}] {{subtitle.sttlDesc}}
       <div class="text-center" *ngIf="subtitle.sttlNum == subtitle.motherQryNum">
         <div class="mb-3"></div>
-        <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onSelectUsrSttlBookmarkNext()">Bookmark-Next</button>
+        <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onClickNext()">Bookmark-Next</button>
       </div>
     </li>
   </ul>

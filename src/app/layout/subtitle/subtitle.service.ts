@@ -51,4 +51,9 @@ export class SubtitleService {
   selectReviewSttlList(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectReviewSttlList', subtitle, httpOptions);
   }
+
+  updateReviewCnt(subtitle: Subtitle): Observable<any> {
+	    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/updateReviewCnt', subtitle, httpOptions);
+  }
+
 }
