@@ -56,4 +56,8 @@ export class SubtitleService {
 	    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/updateReviewCnt', subtitle, httpOptions);
   }
 
+  updateReviewCd(subtitle: Subtitle): Observable<any> {
+	    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/updateReviewCd', subtitle, httpOptions);
+  }
+
 }

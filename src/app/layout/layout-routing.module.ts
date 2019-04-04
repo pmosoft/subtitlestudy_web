@@ -13,6 +13,7 @@ const routes: Routes = [
             { path: 'subtitle-view-mother/:sttlNm', loadChildren: './subtitle/subtitle-view-mother/subtitle-view-mother.module#SubtitleViewMotherModule' },
             { path: 'subtitle-list', loadChildren: './subtitle/subtitle-list/subtitle-list.module#SubtitleListModule' },
             { path: 'subtitle-review', loadChildren: './subtitle/subtitle-review/subtitle-review.module#SubtitleReviewModule' },
+            { path: 'subtitle-question', loadChildren: './subtitle/subtitle-question/subtitle-question.module#SubtitleQuestionModule' },
             { path: 'subtitle-site', loadChildren: './subtitle/subtitle-site/subtitle-site.module#SubtitleSiteModule' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },

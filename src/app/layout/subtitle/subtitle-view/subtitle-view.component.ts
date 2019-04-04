@@ -68,7 +68,7 @@ export class SubtitleViewComponent implements OnInit {
   /*************
    * Combo
    *************/
-  onChangeCombo(i) {
+  onChangeCombo(i : number) {
     this.comboIdx = i;
     //console.log(this.comboIdx);
     switch(this.comboIdx) {

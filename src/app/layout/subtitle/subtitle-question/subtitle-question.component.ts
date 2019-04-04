@@ -4,11 +4,11 @@ import { Subtitle } from '../subtitle';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-subtitle-review',
-  templateUrl: './subtitle-review.component.html',
-  styleUrls: ['./subtitle-review.component.scss']
+  selector: 'app-subtitle-question',
+  templateUrl: './subtitle-question.component.html',
+  styleUrls: ['./subtitle-question.component.scss']
 })
-export class SubtitleReviewComponent implements OnInit {
+export class SubtitleQuestionComponent implements OnInit {
 
   subtitle : Subtitle = new Subtitle();
   reviewSubtitles : Subtitle[];
@@ -23,7 +23,6 @@ export class SubtitleReviewComponent implements OnInit {
 
   comboFunc = [
       {name : 'Done'     , value : '1'  }
-     ,{name : 'Question' , value : '2'  }
      ,{name : 'Quit'     , value : '3'  }
   ];
   comboIdx : number = 0;
@@ -44,7 +43,7 @@ export class SubtitleReviewComponent implements OnInit {
    * Select
    ****************************************************************************/
   onSelectReviewSttlList() {
-    this.subtitle.reviewCd = '1';
+    this.subtitle.reviewCd = '2';
     this.subtitleService.selectReviewSttlList(this.subtitle)
     .subscribe(result => {
       if(!result.isSuccess) alert(result.errUsrMsg)
@@ -75,17 +74,16 @@ export class SubtitleReviewComponent implements OnInit {
   /*************
    * Save
    *************/
-  //onClickSave() {
-  //  switch(this.comboIdx) {
-  //    case 0    : this.onDone();break;
-  //    case 1    : this.onQuestion();break;
-  //    case 2    : this.onQuit();break;
-  //  }
-  //  this.onUnChk();
-  //}
+  onClickSave() {
+    switch(this.comboIdx) {
+      case 0    : this.onDone();break;
+      case 1    : this.onQuit();break;
+    }
+    this.onUnChk();
+  }
 
-  onClickDone() {
-    this.onUpdateReviewCnt();
+  onDone() {
+    this.onUpdateReviewCd('1'); // 일반
     this.onUnChk();
   }
   onUpdateReviewCnt(){
@@ -102,11 +100,7 @@ export class SubtitleReviewComponent implements OnInit {
       }
     }
   }
-  onClickQuestion() {
-    this.onUpdateReviewCd('2'); // 질문
-    this.onUnChk();
-  }
-  onClickQuit() {
+  onQuit() {
     this.onUpdateReviewCd('3'); // 종료
     this.onUnChk();
   }

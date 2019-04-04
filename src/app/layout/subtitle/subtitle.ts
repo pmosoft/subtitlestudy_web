@@ -29,6 +29,7 @@ export class Subtitle {
   fsttlDesc : string = ""; // 외국어자막문장내용
   msttlDesc : string = ""; // 모국어자막문장내용
   reviewCnt : number = 0;  // 리뷰횟수
+  reviewCd  : string = ""; // 리뷰코드
 
   // 유저언어
   flandCd : string = ""; // 외국어언어코드
