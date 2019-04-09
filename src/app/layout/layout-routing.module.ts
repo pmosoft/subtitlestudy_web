@@ -15,6 +15,8 @@ const routes: Routes = [
             { path: 'subtitle-review', loadChildren: './subtitle/subtitle-review/subtitle-review.module#SubtitleReviewModule' },
             { path: 'subtitle-question', loadChildren: './subtitle/subtitle-question/subtitle-question.module#SubtitleQuestionModule' },
             { path: 'subtitle-site', loadChildren: './subtitle/subtitle-site/subtitle-site.module#SubtitleSiteModule' },
+            { path: 'subtitle-opinion', loadChildren: './subtitle/subtitle-opinion/subtitle-opinion.module#SubtitleOpinionModule' },
+            { path: 'stat-usr', loadChildren: './subtitle/stat-usr/stat-usr.module#StatUsrModule' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },

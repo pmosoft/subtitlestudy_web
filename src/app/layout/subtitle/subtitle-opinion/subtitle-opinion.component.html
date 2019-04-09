@@ -1,0 +1,27 @@
+<div class="">
+  <div class="clearfix">
+    <div class="float-right">
+      <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onClickSave()"><i class="fa fa-align-justify fa-fw mr-1"></i>Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="text-center" *ngIf="1 == 1">
+  <div class="mb-3"></div>
+  <label> Write your opinions and We will review them.</label>
+  <textarea class="form-control mb-2" rows="3" [(ngModel)]="subtitle.opinionDesc"(change)="onChangeOpinionDesc($event)"></textarea>
+</div>
+<hr>
+<div id="chat1" class="chat2 border">
+  <ul id="chat1" class="list-group">
+    <li class="list-group-item list-group-item-action" *ngFor="let opinion of opinions" >
+      <small class=" text-muted">
+        <i class="fa fa-clock-o fa-fw"></i> {{opinion.regDtm}}
+      </small>
+      <strong class="pull-right primary-font">{{opinion.usrId}}</strong>
+      <p><p>{{opinion.opinionDesc}}</p>
+    </li>
+  </ul>
+</div>
+
+

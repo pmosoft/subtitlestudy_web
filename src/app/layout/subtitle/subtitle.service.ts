@@ -19,6 +19,26 @@ export class SubtitleService {
   constructor(private http: HttpClient
              ,@Inject(DOCUMENT) private document: any) { }
 
+  /****************************************************************************
+   * Clipboard
+   ****************************************************************************/
+  copyMessage(val: string){
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
+
+  /****************************************************************************
+   * Restful API
+   ****************************************************************************/
   saveUsrSubtitles (fd: FormData): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveUsrSubtitles', fd);
   }
@@ -28,7 +48,9 @@ export class SubtitleService {
   saveReviewSttl(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveReviewSttl', subtitle, httpOptions);
   }
-
+  saveOpinion(subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/saveOpinion', subtitle, httpOptions);
+  }
 
   selectUsrSttlMstrList(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectUsrSttlMstrList', subtitle, httpOptions);
@@ -50,6 +72,10 @@ export class SubtitleService {
 
   selectReviewSttlList(subtitle: Subtitle): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectReviewSttlList', subtitle, httpOptions);
+  }
+
+  selectOpinionList(subtitle: Subtitle): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/subtitle/selectOpinionList', subtitle, httpOptions);
   }
 
   updateReviewCnt(subtitle: Subtitle): Observable<any> {

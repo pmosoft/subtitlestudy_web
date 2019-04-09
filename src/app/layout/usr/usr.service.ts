@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Usr } from './usr';
 import { DOCUMENT } from '@angular/platform-browser';
- 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
@@ -22,12 +22,17 @@ export class UsrService {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/insertUsr', usr, httpOptions)
     ;
   }
-  
+
   selectUsr (usr: Usr): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/selectUsr', usr, httpOptions)
     ;
   }
-  
+
+  selectUsrList (usr: Usr): Observable<any> {
+    return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/selectUsrList', usr, httpOptions)
+    ;
+  }
+
   selectUsrLogin (usr: Usr): Observable<any> {
     return this.http.post<any>('http://'+this.document.location.hostname+':8085/usr/selectUsrLogin', usr, httpOptions)
     ;

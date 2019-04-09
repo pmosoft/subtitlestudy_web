@@ -35,4 +35,7 @@ export class Subtitle {
   flandCd : string = ""; // 외국어언어코드
   mlandCd : string = ""; // 모국어언어코드
 
+  // 사용자 의견
+  opinionDesc : string = ""; // 의견
+
 }

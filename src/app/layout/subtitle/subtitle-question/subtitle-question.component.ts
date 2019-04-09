@@ -54,6 +54,14 @@ export class SubtitleQuestionComponent implements OnInit {
     });
   }
 
+  /*************
+   * Check
+   *************/
+  onCheck(reviewSubtitle : Subtitle){
+    console.log("chk");
+    this.subtitleService.copyMessage(reviewSubtitle.fsttlDesc);
+  }
+
   /****************************************************************************
    * Save
    ****************************************************************************/

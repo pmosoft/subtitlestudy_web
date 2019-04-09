@@ -18,7 +18,7 @@
         <a routerLink="/subtitle-site" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Subtitle Site' | translate }}
         </a>
-        <a routerLink="/subtitle-site" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a routerLink="/subtitle-opinion" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Opinion' | translate }}
         </a>
         <a routerLink="/about" [routerLinkActive]="['router-link-active']" class="list-group-item">
@@ -26,6 +26,9 @@
         </a>
         <!-- only admin menu -->
         <div *ngIf="usrNm == 'lifedomy'">
+            <a routerLink="/stat-usr" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Stats User' | translate }}
+            </a>
             <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
                 <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
             </a>

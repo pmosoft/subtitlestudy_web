@@ -2,6 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { SubtitleService } from '../subtitle.service';
 import { Subtitle } from '../subtitle';
 import { ActivatedRoute } from '@angular/router';
+import { combineAll } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-subtitle-review',
@@ -53,6 +55,14 @@ export class SubtitleReviewComponent implements OnInit {
         //console.log("result.sttlNm="+result.foreignSubtitle[0].sttlNm);
       }
     });
+  }
+
+  /*************
+   * Check
+   *************/
+  onCheck(reviewSubtitle : Subtitle){
+    console.log("chk");
+    this.subtitleService.copyMessage(reviewSubtitle.fsttlDesc);
   }
 
   /****************************************************************************

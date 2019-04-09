@@ -18,7 +18,7 @@
   <ngb-panel>
     <ng-template ngbPanelTitle>
       <div class="text-left">
-        <input class="mr-1" type="checkbox" [(ngModel)]="reviewSubtitle.chk">
+        <input class="mr-1" type="checkbox" [(ngModel)]="reviewSubtitle.chk" (click)="onCheck(reviewSubtitle)">
         <button type="button" class="btn btn-link" >
           {{reviewSubtitle.fsttlDesc}}
           <span *ngIf="reviewSubtitle.reviewCnt == 1">{{one}}</span>

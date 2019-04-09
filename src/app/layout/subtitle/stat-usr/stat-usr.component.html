@@ -1,0 +1,33 @@
+<!-- <div class="container"> -->
+  <div class="card mb-1 ">
+    <div class="card-header">
+      <div class="clearfix">
+        <div class="float-left">User List</div>
+        <div class="float-right">
+          <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onClickQuery()"><i class="fa fa-align-justify fa-fw mr-1"></i>Query</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="text-center">
+  <table class="table table-sm table-bordered table-hover">
+    <thead>
+      <tr>
+        <th style="width:100px;" scope="col">ID</th>
+        <th style="width:100px;" scope="col">REG-DT</th>
+        <th style="width:100px;" scope="col">REG-CNT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usr of usrs; let i=index;">
+        <td class="text-left" >{{usr.usrId       }}</td>
+        <td class="text-left" >{{usr.regDt       }}</td>
+        <td class="text-left" >{{usr.regCnt      }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- </div> -->
