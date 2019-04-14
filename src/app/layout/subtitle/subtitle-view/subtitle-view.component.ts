@@ -136,6 +136,7 @@ export class SubtitleViewComponent implements OnInit {
       .subscribe(result => {
         if(!result.isSuccess) alert(result.errUsrMsg)
         else {
+        	this.onSelectBookmark();
         }
       });
     }
