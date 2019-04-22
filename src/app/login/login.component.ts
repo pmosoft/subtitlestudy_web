@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   
     onLoggedin() {
         // this.usrComponent.selectUsrLogin(usrEmail, usrPw);
+        this.usr.usrId    = this.usr.usrEmail;
         this.usrService.selectUsrLogin(this.usr).subscribe(result => {
             if(!result.isSuccess) {
                 alert(result.errUsrMsg);
