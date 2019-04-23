@@ -6,7 +6,7 @@
     </div>
     -->
     <div class="float-right">
-      <select class="btn btn-outline-primary btn-sm mr-2" (change)="onChangeCombo($event.target.selectedIndex)"  >
+      <select [(ngModel)]="selectedValue" class="btn btn-outline-primary btn-sm mr-2" (change)="onChangeCombo($event.target.selectedIndex)"  >
         <option *ngFor="let func of comboFunc" [value]="func.value" >{{func.name}}</option>
       </select>
       <button type="button" class="btn btn-outline-primary mr-2 btn-sm" (click)="onClickExecute()"><i class="fa fa-align-justify fa-fw mr-1"></i>Execute</button>

@@ -22,7 +22,7 @@ export class SubtitleViewComponent implements OnInit {
      ,{name : 'First'    , value : 'first'     }
   ];
   comboIdx : number = 0;
-
+  selectedValue = "bookmark";
   constructor(private subtitleService: SubtitleService
              ,private route: ActivatedRoute) { }
 
@@ -37,6 +37,7 @@ export class SubtitleViewComponent implements OnInit {
     this.subtitle.sttlNm = this.route.snapshot.paramMap.get('sttlNm');
     //console.log("this.subtitle.usrId=="+ this.subtitle.usrId);
     this.onSelectUsrSttl();
+    //this.comboFunc.le
   }
 
   /****************************************************************************
@@ -93,6 +94,8 @@ export class SubtitleViewComponent implements OnInit {
    * Execute - Bookmark
    *********************/
   onSelectBookmark() {
+    this.selectedValue = "bookmark";
+
     this.subtitle.condBookmarkYn = 'Y';
     this.onSelectUsrSttl();
 
